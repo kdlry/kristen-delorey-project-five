@@ -3,10 +3,10 @@ import React from 'react';
 const SearchImage = () => {
     console.log('Do something')
     return (
-        <div>
+        <div clasName="imageForm">
             <form action="">
                 <div>
-                    <label className="sr-only" htmlFor="searchImage">Choose a band name:</label>
+                    <label className="inputLabel" htmlFor="searchImage">Search for a keyword:</label>
                     <input
                         // className=""
                         // onChange=

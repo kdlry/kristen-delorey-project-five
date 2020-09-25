@@ -3,10 +3,10 @@ import React from 'react';
 const FindName = () => {
     console.log('Do something')
     return (
-        <div>
+        <div className="bandForm">
             <form action="">
-                <div>
-                    <label className="sr-only" htmlFor="findName">Choose a band name:</label>
+                <div className="inputLabel">
+                    <label htmlFor="findName">Choose a band name:</label>
                     <input
                         // className=""
                         // onChange=

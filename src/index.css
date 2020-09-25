@@ -13,6 +13,15 @@ code {
 }
 
 /* Import local fonts */
+/* Alba */
 @font-face {
   font-family: 'alba';
   src: local('alba'), url(./fonts/alba.TTF) format('truetype');}
+
+/* Market deco */
+@font-face {
+  font-family: 'marketDeco';
+  src: local('marketDeco'), url(./fonts/marketDeco.ttf) format('truetype');}
+
+
+

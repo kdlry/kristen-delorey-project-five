@@ -15,8 +15,9 @@ html {
 
 body {
     font-size: 1.6rem;
-    /* font-family:  */
-    color: #FAFAFA;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 400;
+    color: #454545;
 }
 
 h1,
@@ -38,13 +39,13 @@ img {
     height: auto;
 }
 
-form {
+/* form {
     display: inline-block;
 }
 
 label {
     display: inline-block;
-}
+} */
 
 .wrapper {
   width: 90%;
@@ -52,32 +53,68 @@ label {
   margin: 0 auto;
 }
 
-/* Header styles */
-h1 {
-  font-family: alba, sans-serif;
-  color: #ffd900;
-  font-size: clamp(3rem, 5vw, 8rem);
-  text-shadow: 6px 6px #f04f43, 2px 2px #f04f43;
-}
-
-.slanted {
-  transform: rotate(-5deg) skew(-5deg);
-}
-
-/* Test styles */
-
-
-/* Header styles */
+/* Background styles */
 header {
   height: 50vh;
   background: #ffb2ad;
+}
+
+main {
+  height: 50vh;
+  background: #fec9c5;
+}
+
+footer {
+  background-color: #fcb58f;
+  padding: 20px 0;
+}
+
+/* Heading styles */
+h1 {
+  font-family: alba, sans-serif;
+  text-align: center;
+  color: #ffd900;
+  font-size: clamp(3rem, 5vw, 8rem);
+  text-shadow: 12px 12px #df6347, 10px 10px #df6347, 8px 8px #df6347, 6px 6px #df6347, 4px 4px #df6347, 2px 2px #df6347;
+}
+
+/* .slanted {
+  transform: rotate(-5deg) skew(-5deg);
+} */
+
+/* Test styles */
+footer p {
+  font-weight: 500;
+  text-align: center; 
+}
+
+/* Form styles */
+label {
+  margin-bottom: 20px;
+}
+
+/* Header positioning */
+header {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-h1 {
-    align-self: center;
+/* Main positioning */
+main {
+  background: #fec9c5;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+}
 
+.inputLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.bandForm {
+  margin-bottom: 30px;
+}
