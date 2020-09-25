@@ -4,7 +4,7 @@ const FindName = () => {
     console.log('Do something')
     return (
         <div className="bandForm">
-            <form action="">
+            <form action="submit">
                 <div className="inputLabel">
                     <label htmlFor="findName">Choose a band name:</label>
                     <input
@@ -15,13 +15,14 @@ const FindName = () => {
                         id="findName"
                         placeholder="The Misfits" />
                 </div>
-                
-                <button
-                    // className=""
-                    // onClick=
-                    type='submit'>
-                    Submit
-                </button>
+                <div>
+                    <button
+                        // className=""
+                        // onClick=
+                        type='submit'>
+                        Submit
+                    </button>
+                </div>
 
             </form>
         </div>

@@ -46,7 +46,7 @@ class App extends Component {
         </main>
 
         <footer>
-          <p>Created by Kristen Delorey at <a href="https://junocollege.com/" role="link">Juno College</a></p>
+          <p>Created by Kristen Delorey at <a href="https://junocollege.com/">Juno College</a></p>
           <p>Copyright &#169 2020 Juno College of Technology</p>
           {/* <p>Follow me on <a href="https://junocollege.com/" role="link"></a></p> */}
         </footer>

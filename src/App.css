@@ -23,7 +23,8 @@ body {
 h1,
 h2,
 p,
-form {
+form,
+button {
     margin: 0;
     padding: 0;
 }
@@ -39,13 +40,9 @@ img {
     height: auto;
 }
 
-/* form {
-    display: inline-block;
+button {
+  display: inline-block;
 }
-
-label {
-    display: inline-block;
-} */
 
 .wrapper {
   width: 90%;
@@ -93,6 +90,10 @@ label {
   margin-bottom: 20px;
 }
 
+button {
+  padding:10px 25px;
+}
+
 /* Header positioning */
 header {
   display: flex;
@@ -105,6 +106,10 @@ main {
   background: #fec9c5;
 }
 
+.bandForm {
+  margin-bottom: 30px;
+}
+
 form {
   display: flex;
   justify-content: center;
@@ -115,6 +120,7 @@ form {
   flex-direction: column;
 }
 
-.bandForm {
-  margin-bottom: 30px;
+button {
+  align-self: flex-end;
 }
+
