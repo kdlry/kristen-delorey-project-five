@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import BandForm from './BandForm';
-import ImageForm from './ImageForm';
+import BandForm from './Components/BandForm';
+import ImageForm from './Components/ImageForm';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      band: '',
-      image: '',
-      imageCapture: '',
+      bandName: '',
+      bandNameCapture: '',
+      imageSearch: '',
+      imageSearchCapture: '',
       imageResults: [],
       // vinylImages: [],
     }
@@ -18,19 +19,26 @@ class App extends Component {
 
   // ImageForm input handling
   handleImageValue = (e) => {
-    // console.log(e.target.value);
 
     this.setState({
-      image: e.target.value
+      imageSearch: e.target.value
     });
   }
 
   handleImageSubmit = (e) => {
     e.preventDefault();
 
-    const imageKeyword = this.state.image;
-    console.log(imageKeyword);
+    const imageValue = this.state.imageSearch;
+    this.state.imageSearchCapture = imageValue;
 
+    this.setState({
+      imageSearch: '',
+      imageSearchCapture: imageValue,
+    });
+
+    console.log(this.state.imageSearchCapture);
+
+    // API Call - using image keyword search
     const apiAuth = '563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222';
     const apiURL = 'https://api.pexels.com/v1/search'
 
@@ -42,45 +50,46 @@ class App extends Component {
       url: apiURL,
       dataResponse: 'json',
       params: {
-        query: `${imageKeyword}`,
+        query: `${this.state.imageSearchCapture}`,
         per_page: 6,
       },
     }).then((res) => {
 
       let apiResults = res.data.photos
-
       console.log(apiResults);
 
       this.setState({
         imageResults: apiResults
       });
 
-
     })
 
     this.setState({
-      image: ''
+      imageSearch: ''
     });
   }
 
   // NameForm Input handling
   handleBandValue = (e) => {
-    // console.log(e.target.value);
+    // console.log(e.target.value)
 
     this.setState({
-      band: e.target.value,
+      bandName: e.target.value,
     });
   }
 
   handleBandSubmit = (e) => {
     e.preventDefault();
 
-    const bandName = this.state.band;
-    console.log(bandName);
+    const bandNameValue = this.state.bandName;
+    this.state.bandNameCapture = bandNameValue;
 
     this.setState({
-      band: '',
+      bandName: '',
+      bandNameCapture: bandNameValue,
     });
+
+    console.log(this.state.bandNameCapture);
   }
 
   render() {
@@ -96,17 +105,17 @@ class App extends Component {
           <div className="wrapper">
             <section>
               <BandForm 
-                bandValue={this.state.band} 
+                bandValue={this.state.bandName} 
                 setBandValue={this.handleBandValue}
                 saveBandValue={this.handleBandSubmit}
               />
 
               <ImageForm 
-                imageValue={this.state.image}
+                imageValue={this.state.imageSearch}
                 setImageValue={this.handleImageValue}
                 saveImageValue={this.handleImageSubmit}
               />
-
+              <p>The band name you selected is {this.state.bandNameCapture}.</p>
               <div>
                 
               </div>
