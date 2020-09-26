@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FindName from './FindName';
-import SearchImage from './SearchImage';
+import BandForm from './BandForm';
+import ImageForm from './ImageForm';
 import './App.css';
 
 class App extends Component {
@@ -9,13 +9,29 @@ class App extends Component {
     this.state = {
       imageSearch: '',
       imageResults: [],
-      bandName: '',
+      band: '',
       // vinylImage: [],
     }
   }
 
-  handleChange = (event) => {
-    console.log(event);
+  // ImageForm input handling
+
+  // NameForm Input handling
+  handleNameValue = (e) => {
+    console.log(e.target.value);
+
+    this.setState({
+      band: e.target.value
+    });
+  }
+
+  handleNameSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+
+    this.setState({
+      band: ''
+    });
   }
 
   render() {
@@ -30,23 +46,24 @@ class App extends Component {
         <main>
           <div className="wrapper">
             <section>
-              <FindName 
-              band={this.state.bandName}
-              captureBand={() => {this.handleChange()}}
+              <BandForm 
+              value={this.state.band} 
+              setValue={this.handleNameValue}
+              saveValue={this.handleNameSubmit}
               />
 
-              <SearchImage 
+              <ImageForm 
                 imageSearch={this.state.imageSearch}
               />
 
               <div></div>
             </section>
 
-            <section>
+            {/* <section>
 
               <div></div>
 
-            </section>
+            </section> */}
           </div>
         </main>
 

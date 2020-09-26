@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SearchImage = () => {
+const ImageForm = () => {
 
     return (
-        <div clasName="imageForm">
+        <div className="imageForm">
             <form action="submit">
                 <div className="inputContainer">
                     <label htmlFor="searchImage">FIND AN IMAGE: </label>
@@ -21,9 +21,9 @@ const SearchImage = () => {
                         // onClick=
                         type='submit'
                         aria-label="click here to search for keyword">
-                        <span class="fa-stack fa-2x" role="img" aria-hidden="true">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fas fa-search fa-stack-1x fa-inverse"></i>
+                        <span className="fa-stack fa-2x" role="img" aria-hidden="true">
+                            <i className="fas fa-circle fa-stack-2x"></i>
+                            <i className="fas fa-search fa-stack-1x fa-inverse"></i>
                         </span>
                     </button>
                         
@@ -34,4 +34,4 @@ const SearchImage = () => {
     )
 }
 
-export default SearchImage;
+export default ImageForm;
