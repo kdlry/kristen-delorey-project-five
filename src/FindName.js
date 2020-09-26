@@ -1,29 +1,20 @@
 import React from 'react';
 
-const FindName = () => {
-    console.log('Do something')
+const FindName = (props) => {
+
+    const { band, captureBand } = props
+    console.log(props);
+    
     return (
         <div className="bandForm">
             <form action="submit">
-                <div className="inputLabel">
-                    <label htmlFor="findName">Choose a band name:</label>
-                    <input
-                        // className=""
-                        // onChange=
-                        type="text"
-                        name="findName"
-                        id="findName"
-                        placeholder="The Misfits" />
+                <div className="inputContainer">
+                    <label htmlFor="findName">CHOOSE A BAND NAME:</label>
+                    <input type="text" id="findName" onChange={captureBand} value={band} placeholder="ex: The Misfits"/>
                 </div>
                 <div>
-                    <button
-                        // className=""
-                        // onClick=
-                        type='submit'>
-                        Submit
-                    </button>
+                    <button class="nameButton" type='submit'>Submit</button>
                 </div>
-
             </form>
         </div>
     )

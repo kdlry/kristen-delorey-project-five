@@ -9,9 +9,13 @@ class App extends Component {
     this.state = {
       imageSearch: '',
       imageResults: [],
-      vinylBand: '',
-      vinylImage: [],
+      bandName: '',
+      // vinylImage: [],
     }
+  }
+
+  handleChange = (event) => {
+    console.log(event);
   }
 
   render() {
@@ -27,20 +31,21 @@ class App extends Component {
           <div className="wrapper">
             <section>
               <FindName 
-                vinylBand={this.state.vinylBand}
+              band={this.state.bandName}
+              captureBand={() => {this.handleChange()}}
               />
 
               <SearchImage 
                 imageSearch={this.state.imageSearch}
               />
 
-              <div>
-
-              </div>
+              <div></div>
             </section>
 
             <section>
-              {/* Holding section for firebase database */}
+
+              <div></div>
+
             </section>
           </div>
         </main>

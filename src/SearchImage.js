@@ -1,27 +1,32 @@
 import React from 'react';
 
 const SearchImage = () => {
-    console.log('Do something')
+
     return (
         <div clasName="imageForm">
             <form action="submit">
-                <div>
-                    <label className="inputLabel" htmlFor="searchImage">Search for a keyword:</label>
+                <div className="inputContainer">
+                    <label htmlFor="searchImage">FIND AN IMAGE: </label>
                     <input
-                        // className=""
+                        className="searchInput"
                         // onChange=
                         type="text"
                         name="searchImage"
                         id="searchImage"
-                        placeholder="Pink clouds" />
+                        placeholder="ex: Fluffy clouds" />
                 </div>
                 <div>
-                    <button
+                    <button className="searchButton"
                         // className=""
                         // onClick=
-                        type='submit'>
-                        Submit
+                        type='submit'
+                        aria-label="click here to search for keyword">
+                        <span class="fa-stack fa-2x" role="img" aria-hidden="true">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fas fa-search fa-stack-1x fa-inverse"></i>
+                        </span>
                     </button>
+                        
                 </div>
             </form>
 

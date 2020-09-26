@@ -17,14 +17,13 @@ body {
     font-size: 1.6rem;
     font-family: 'Heebo', sans-serif;
     font-weight: 400;
-    color: #454545;
+    color: #3a3a3a;
 }
 
 h1,
 h2,
 p,
-form,
-button {
+form {
     margin: 0;
     padding: 0;
 }
@@ -52,12 +51,10 @@ button {
 
 /* Background styles */
 header {
-  height: 50vh;
   background: #ffb2ad;
 }
 
 main {
-  height: 50vh;
   background: #fec9c5;
 }
 
@@ -71,31 +68,102 @@ h1 {
   font-family: alba, sans-serif;
   text-align: center;
   color: #ffd900;
-  font-size: clamp(3rem, 5vw, 8rem);
+  font-size: clamp(4rem, 7vw, 10rem);
   text-shadow: 12px 12px #df6347, 10px 10px #df6347, 8px 8px #df6347, 6px 6px #df6347, 4px 4px #df6347, 2px 2px #df6347;
 }
 
-/* .slanted {
-  transform: rotate(-5deg) skew(-5deg);
-} */
+.slanted {
+  display: inline-block;
+  transform: rotate(-5deg) 
+  skew(-10deg);
+}
 
-/* Test styles */
+/* Text and link styles */
+p {
+  letter-spacing: 1px;
+  line-height: 20px;
+}
+
 footer p {
-  font-weight: 500;
   text-align: center; 
 }
 
-/* Form styles */
-label {
-  margin-bottom: 20px;
+a {
+  color: #EA593E;
+  border-bottom: 2px solid transparent;
 }
 
-button {
-  padding:10px 25px;
+a:hover,
+a:focus {
+  border-bottom: 2px solid #EA593E;
+} 
+
+/* Form styles */
+label {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #df6347;
+  margin-bottom: 20px;
+
 }
+
+input::placeholder {
+  letter-spacing: 1.5px;
+  color: #9a9a9a;
+}
+
+input {
+  padding: 10px;
+  width: 350px;
+  background: #fec9c5;
+  border: none;
+  border-bottom: 2px solid #df6347;
+}
+
+.nameButton {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px transparent solid;
+  border-radius: 10px;
+  padding: 10px 15px;
+  background: #df6347;
+  color: #fafafa;
+}
+
+.nameButton:hover,
+.nameButton:focus {
+  color: #ffd900;
+}
+
+.searchButton {
+    border: none;
+    background: none;
+    align-self: center;
+    height: 100%;
+}
+
+.searchButton span {
+  font-size: 3rem;
+}
+
+span .fa-stack-2x {
+    color: #df6347;
+}
+
+span .fa-stack-1x {
+    color: #fafafa;
+}
+
+span .fa-stack-1x:hover,
+span .fa-stack-1x:focus {
+    color: #ffd900;
+}
+
 
 /* Header positioning */
 header {
+  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,7 +171,12 @@ header {
 
 /* Main positioning */
 main {
+  height: 60vh;
   background: #fec9c5;
+}
+
+section {
+  padding: 75px 0;
 }
 
 .bandForm {
@@ -113,14 +186,11 @@ main {
 form {
   display: flex;
   justify-content: center;
+  align-items: center
 }
 
-.inputLabel {
+.inputContainer {
   display: flex;
   flex-direction: column;
+  margin-right: 75px;
 }
-
-button {
-  align-self: flex-end;
-}
-
