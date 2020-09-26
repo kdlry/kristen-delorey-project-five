@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import BandForm from './Components/BandForm';
 import ImageForm from './Components/ImageForm';
+import StagingArea from './Components/StagingArea';
 import './App.css';
 
 class App extends Component {
@@ -13,11 +14,32 @@ class App extends Component {
       imageSearch: '',
       imageSearchCapture: '',
       imageResults: [],
+      finalImageCapture: '',
       // vinylImages: [],
     }
   }
 
-  // ImageForm input handling
+  // NameForm input handling -----------------------------------
+  handleBandValue = (e) => {
+
+    this.setState({
+      bandName: e.target.value,
+    });
+  }
+
+  handleBandSubmit = (e) => {
+    e.preventDefault();
+
+    const bandNameValue = this.state.bandName;
+    this.state.bandNameCapture = bandNameValue;
+
+    this.setState({
+      bandName: '',
+      bandNameCapture: bandNameValue,
+    });
+  }
+
+  // ImageForm input handling -----------------------------------
   handleImageValue = (e) => {
 
     this.setState({
@@ -36,7 +58,7 @@ class App extends Component {
       imageSearchCapture: imageValue,
     });
 
-    console.log(this.state.imageSearchCapture);
+    // console.log(this.state.imageSearchCapture);
 
     // API Call - using image keyword search
     const apiAuth = '563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222';
@@ -56,12 +78,11 @@ class App extends Component {
     }).then((res) => {
 
       let apiResults = res.data.photos
-      console.log(apiResults);
+      // console.log(apiResults);
 
       this.setState({
         imageResults: apiResults
       });
-
     })
 
     this.setState({
@@ -69,30 +90,36 @@ class App extends Component {
     });
   }
 
-  // NameForm Input handling
-  handleBandValue = (e) => {
-    // console.log(e.target.value)
+  // StagingArea - image selection -----------------------------------
+  handleKeep = (finalImage) => {
 
-    this.setState({
-      bandName: e.target.value,
-    });
-  }
+      const imageList = [...this.state.imageResults];
 
-  handleBandSubmit = (e) => {
-    e.preventDefault();
+      const updatedList = imageList.filter((_, index) => {
+          return finalImage === index;
+      });
+      console.log(updatedList);
 
-    const bandNameValue = this.state.bandName;
-    this.state.bandNameCapture = bandNameValue;
+      const selectedImage = updatedList[0].src.medium
 
-    this.setState({
-      bandName: '',
-      bandNameCapture: bandNameValue,
-    });
+      this.state.finalImageCapture = selectedImage
 
-    console.log(this.state.bandNameCapture);
+      this.setState({
+        imageResults: updatedList,
+        finalImageCapture: selectedImage,
+      });
+      // console.log(this.state.finalImageResult);
   }
 
   render() {
+    // Conditional statements
+    // let {bandNameCapture} = this.state;
+    // if (this.state = '',
+    // return (
+
+    // )
+
+
     return (
       <div className="App">
         <header>
@@ -115,18 +142,32 @@ class App extends Component {
                 setImageValue={this.handleImageValue}
                 saveImageValue={this.handleImageSubmit}
               />
-              <p>The band name you selected is {this.state.bandNameCapture}.</p>
-              <div>
-                
+
+              <div className="outputContainer">
+                <ul>
+                  {this.state.imageResults.map((image, index) => {
+                    return (
+                      <StagingArea
+                        url={image.src.medium}
+                        // selectImage={() => {this.handleKeep()}} 
+                        selectImage={() => this.handleKeep(index)} 
+                        key={index}
+                      />
+                    );
+                  })}
+                </ul>
               </div>
 
             </section>
 
-            {/* <section>
+            <section>
 
-              <div></div>
+            {/* <div>
+              <img> 
+              <p></p>
+            </div> */}
 
-            </section> */}
+            </section>
           </div>
         </main>
 

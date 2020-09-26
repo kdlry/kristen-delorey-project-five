@@ -19,7 +19,7 @@ const BandForm = (props) => {
                 <div>
                     <button 
                     className="nameButton" 
-                    type='submit' 
+                    type="submit" 
                     onClick={saveBandValue}>submit</button>
                 </div>
             </form>
