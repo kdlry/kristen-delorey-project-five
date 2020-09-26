@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import BandForm from './BandForm';
 import ImageForm from './ImageForm';
 import './App.css';
@@ -7,30 +8,78 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      imageSearch: '',
-      imageResults: [],
       band: '',
-      // vinylImage: [],
+      image: '',
+      imageCapture: '',
+      imageResults: [],
+      // vinylImages: [],
     }
   }
 
   // ImageForm input handling
-
-  // NameForm Input handling
-  handleNameValue = (e) => {
-    console.log(e.target.value);
+  handleImageValue = (e) => {
+    // console.log(e.target.value);
 
     this.setState({
-      band: e.target.value
+      image: e.target.value
     });
   }
 
-  handleNameSubmit = (e) => {
+  handleImageSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+
+    const imageKeyword = this.state.image;
+    console.log(imageKeyword);
+
+    const apiAuth = '563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222';
+    const apiURL = 'https://api.pexels.com/v1/search'
+
+    axios({
+      method: 'GET',
+      headers: {
+        'Authorization': `${apiAuth}`,
+      },
+      url: apiURL,
+      dataResponse: 'json',
+      params: {
+        query: `${imageKeyword}`,
+        per_page: 6,
+      },
+    }).then((res) => {
+
+      let apiResults = res.data.photos
+
+      console.log(apiResults);
+
+      this.setState({
+        imageResults: apiResults
+      });
+
+
+    })
 
     this.setState({
-      band: ''
+      image: ''
+    });
+  }
+
+  // NameForm Input handling
+  handleBandValue = (e) => {
+    // console.log(e.target.value);
+
+    this.setState({
+      band: e.target.value,
+    });
+  }
+
+  handleBandSubmit = (e) => {
+    e.preventDefault();
+
+    const bandName = this.state.band;
+    console.log(bandName);
+
+    this.setState({
+      band: '',
     });
   }
 
@@ -47,16 +96,21 @@ class App extends Component {
           <div className="wrapper">
             <section>
               <BandForm 
-              value={this.state.band} 
-              setValue={this.handleNameValue}
-              saveValue={this.handleNameSubmit}
+                bandValue={this.state.band} 
+                setBandValue={this.handleBandValue}
+                saveBandValue={this.handleBandSubmit}
               />
 
               <ImageForm 
-                imageSearch={this.state.imageSearch}
+                imageValue={this.state.image}
+                setImageValue={this.handleImageValue}
+                saveImageValue={this.handleImageSubmit}
               />
 
-              <div></div>
+              <div>
+                
+              </div>
+
             </section>
 
             {/* <section>

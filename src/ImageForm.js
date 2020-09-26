@@ -1,6 +1,8 @@
 import React from 'react';
 
-const ImageForm = () => {
+const ImageForm = (props) => {
+
+    const { imageValue, setImageValue, saveImageValue } = props
 
     return (
         <div className="imageForm">
@@ -8,17 +10,15 @@ const ImageForm = () => {
                 <div className="inputContainer">
                     <label htmlFor="searchImage">FIND AN IMAGE: </label>
                     <input
-                        className="searchInput"
-                        // onChange=
                         type="text"
-                        name="searchImage"
                         id="searchImage"
+                        onChange={setImageValue}
+                        value={imageValue}
                         placeholder="ex: Fluffy clouds" />
                 </div>
                 <div>
                     <button className="searchButton"
-                        // className=""
-                        // onClick=
+                        onClick={saveImageValue}
                         type='submit'
                         aria-label="click here to search for keyword">
                         <span className="fa-stack fa-2x" role="img" aria-hidden="true">

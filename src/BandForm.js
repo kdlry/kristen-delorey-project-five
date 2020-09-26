@@ -2,12 +2,7 @@ import React from 'react';
 
 const BandForm = (props) => {
 
-    // const setData = (data) => {
-    //     setValue(data)
-    //     console.log("Form>", data);
-    // }
-
-    const { value, setValue, saveValue } = props
+    const { bandValue, setBandValue, saveBandValue } = props
     
     return (
         <div className="bandForm">
@@ -17,15 +12,15 @@ const BandForm = (props) => {
                     <input 
                     type="text" 
                     id="findName" 
-                    onChange={setValue} 
-                    value={value} 
+                    onChange={setBandValue} 
+                    value={bandValue} 
                     placeholder="ex: The Misfits"/>
                 </div>
                 <div>
                     <button 
                     className="nameButton" 
                     type='submit' 
-                    onClick={saveValue}>submit</button>
+                    onClick={saveBandValue}>submit</button>
                 </div>
             </form>
         </div>
