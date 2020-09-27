@@ -6,7 +6,7 @@ const BandForm = (props) => {
     
     return (
         <div className="bandForm">
-            <form action="submit">
+            <form action="submit" id="bandForm">
                 <div className="inputContainer">
                     <label htmlFor="findName">CHOOSE A BAND NAME:</label>
                     <input 

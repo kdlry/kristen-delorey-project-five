@@ -3,7 +3,6 @@ import React from 'react';
 const StagingArea = (props) => {
 
     const { url, selectImage } = props
-
     return (
         <li>
             <div className="imageContainer">

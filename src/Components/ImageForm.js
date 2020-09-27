@@ -6,7 +6,7 @@ const ImageForm = (props) => {
 
     return (
         <div className="imageForm">
-            <form action="submit">
+            <form action="submit" id="imageForm">
                 <div className="inputContainer">
                     <label htmlFor="searchImage">FIND AN IMAGE: </label>
                     <input

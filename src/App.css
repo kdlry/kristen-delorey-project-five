@@ -38,6 +38,10 @@ a {
     display: inline-block;
 }
 
+button {
+  line-height: 0px;
+}
+
 img {
     width: 100%;
     display: block;
@@ -99,7 +103,7 @@ a:focus {
   border-bottom: 2px solid #EA593E;
 } 
 
-/* Form styles ----------------------- */
+/* Form input styles ----------------------- */
 label {
   font-size: 2rem;
   font-weight: 500;
@@ -121,13 +125,14 @@ input {
   border-bottom: 2px solid #df6347;
 }
 
+/* Button styles ----------------------- */
 .nameButton {
   font-size: 1.8rem;
   font-weight: 700;
   text-transform: uppercase;
   border: 2px transparent solid;
   border-radius: 10px;
-  padding: 10px 15px;
+  padding: 20px 15px;
   background: #df6347;
   color: #fafafa;
 }
@@ -165,6 +170,40 @@ span .fa-stack-1x:focus {
     color: #ffd900;
 }
 
+.resetButton {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px transparent solid;
+  border-radius: 10px;
+  padding: 20px 8px;
+  background: #f59c88;
+  color: #fafafa;
+}
+
+.resetButton:hover,
+.resetButton:focus {
+  color: #fce45c;
+}
+
+/* Swal styles ----------------------- */
+.swal2-title {
+    font-size: 2rem;
+    font-weight: 500px;
+}
+
+.swal2-content {
+  font-size: 1.6rem;
+}
+
+.swal2-confirm,
+.swal2-styled {
+    letter-spacing: 1px;
+    font-weight: 500;
+    background-color: #e87e75;
+    padding: 15px 20px;    
+}
+
 /* Header positioning ----------------------- */
 header {
   height: 50vh;
@@ -183,6 +222,11 @@ section {
   padding: 75px 0;
 }
 
+.formInputs {
+  display: flex;
+  flex-direction: column;
+}
+
 .bandForm {
   margin-bottom: 50px;
 }
@@ -199,14 +243,13 @@ form {
   margin-right: 75px;
 }
 
+.resetButton {
+  margin: 30px auto;
+}
+
 .outputContainer {
   margin-top: 50px;
 }
-
-/* .outputContainer ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-} */
 
 .outputContainer ul {
   display: flex;
