@@ -184,7 +184,7 @@ section {
 }
 
 .bandForm {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 form {
@@ -203,37 +203,31 @@ form {
   margin-top: 50px;
 }
 
-.outputContainer ul {
+/* .outputContainer ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+} */
+
+.outputContainer ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .outputContainer ul li {
   margin: 0 auto;
-  padding-bottom: 30px;
+  padding: 15px 0;
   position: relative;
 }
 
 .outputContainer img {
-  height: 250px;
-  width: 250px;
+  height: 350px;
+  width: 350px;
   object-fit: cover;
 }
 
 .outputContainer button {
   position: absolute;
-  top: -20px;
+  top: -5px;
   right: 5px;
-}
-
-@media (max-width: 950px) {
-  .outputContainer ul {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 620px) {
-  .outputContainer ul {
-    grid-template-columns: 1fr;
-  }
 }

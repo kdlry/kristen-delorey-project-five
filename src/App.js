@@ -19,7 +19,7 @@ class App extends Component {
     }
   }
 
-  // NameForm input handling -----------------------------------
+  // Name Form - Input handling -----------------------------------
   handleBandValue = (e) => {
 
     this.setState({
@@ -39,7 +39,7 @@ class App extends Component {
     });
   }
 
-  // ImageForm input handling -----------------------------------
+  // Image Form - Input handling -----------------------------------
   handleImageValue = (e) => {
 
     this.setState({
@@ -78,7 +78,6 @@ class App extends Component {
     }).then((res) => {
 
       let apiResults = res.data.photos
-      // console.log(apiResults);
 
       this.setState({
         imageResults: apiResults
@@ -90,7 +89,7 @@ class App extends Component {
     });
   }
 
-  // StagingArea - image selection -----------------------------------
+  // StagingA Area - Image selection -----------------------------------
   handleKeep = (finalImage) => {
 
       const imageList = [...this.state.imageResults];
@@ -113,12 +112,9 @@ class App extends Component {
 
   render() {
     // Conditional statements
-    // let {bandNameCapture} = this.state;
-    // if (this.state = '',
-    // return (
 
-    // )
-
+    // Conpyright for footer
+    let copyright = '\u00A9'
 
     return (
       <div className="App">
@@ -149,7 +145,6 @@ class App extends Component {
                     return (
                       <StagingArea
                         url={image.src.medium}
-                        // selectImage={() => {this.handleKeep()}} 
                         selectImage={() => this.handleKeep(index)} 
                         key={index}
                       />
@@ -162,10 +157,10 @@ class App extends Component {
 
             <section>
 
-            {/* <div>
-              <img> 
-              <p></p>
-            </div> */}
+            <div>
+              {/* <img src={this.state.finalImageCapture} /> 
+              <p>{this.state.bandNameCapture}</p> */}
+            </div>
 
             </section>
           </div>
@@ -173,7 +168,7 @@ class App extends Component {
 
         <footer>
           <p>Created by Kristen Delorey at <a href="https://junocollege.com/">Juno College</a></p>
-          <p>Copyright &#169 2020 Juno College of Technology</p>
+          <p>Copyright {copyright} 2020 Juno College of Technology</p>
           {/* <p>Follow me on <a href="https://junocollege.com/" role="link"></a></p> */}
         </footer>
       </div>
