@@ -151,13 +151,15 @@ input {
 }
 
 .searchImageButton,
-.selectImageButton {
+.selectImageButton,
+.finalizeButton {
     border: none;
     background: none;
     align-self: center;
 }
 
-.searchImageButton span {
+.searchImageButton span,
+.finalizeImageButton span {
   font-size: 3rem;
 }
 
@@ -253,7 +255,7 @@ p.conf {
   padding-bottom: 25px;
 }
 
-.inputContainer {
+.formContainer {
   display: flex;
   flex-direction: column;
   margin-right: 75px;
@@ -263,30 +265,39 @@ p.conf {
   margin: 30px auto;
 }
 
-.outputContainer {
+.imagesContainer {
   margin-top: 50px;
 }
 
-.outputContainer ul {
+.imagesContainer ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.outputContainer ul li {
+.imagesContainer ul li {
   margin: 0 auto;
   padding: 15px 0;
   position: relative;
 }
 
-.outputContainer img {
+.imagesContainer img {
   height: 350px;
   width: 350px;
   object-fit: cover;
 }
 
-.outputContainer button {
+.imagesContainer button {
   position: absolute;
   top: -5px;
   right: 5px;
+}
+
+.finalConf {
+  display: flex;
+  flex-direction: column;
+}
+
+.finalizeButton {
+  align-items: center;
 }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import BandForm from './Components/BandForm';
 import ImageForm from './Components/ImageForm';
+import ImageSelection from './Components/ImageSelection';
 import StagingArea from './Components/StagingArea';
 import './App.css';
 
@@ -20,7 +21,7 @@ class App extends Component {
     };
   }
 
-  // Name Form - Input handling -----------------------------------
+  // Band Form - Input + submit handling -----------------------------------
   handleBandValue = (e) => {
     this.setState({
       bandName: e.target.value,
@@ -48,7 +49,7 @@ class App extends Component {
     });
   };
 
-  // Image Form - Input handling -----------------------------------
+  // Image Form - Input + submit handling -----------------------------------
   handleImageValue = (e) => {
     this.setState({
       imageSearch: e.target.value,
@@ -65,7 +66,6 @@ class App extends Component {
         icon: "error",
         confirmButtonText: "Okay!",
       });
-      // alert('You\'ll need a band before you can choose a cover');
     }
 
     const imageValue = this.state.imageSearch;
@@ -76,8 +76,6 @@ class App extends Component {
       imageSearchCapture: imageValue,
     });
 
-    // console.log(this.state.imageSearchCapture);
-
     // API Call - using image keyword search
     const apiAuth = "563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222";
     const apiURL = "https://api.pexels.com/v1/search";
@@ -85,12 +83,12 @@ class App extends Component {
     axios({
       method: "GET",
       headers: {
-        Authorization: `${apiAuth}`,
+        Authorization: apiAuth,
       },
       url: apiURL,
       dataResponse: "json",
       params: {
-        query: `${this.state.imageSearchCapture}`,
+        query: this.state.imageSearchCapture,
         per_page: 6,
       },
     })
@@ -142,7 +140,7 @@ class App extends Component {
     });
   };
 
-  // StagingA Area - Image selection -----------------------------------
+  // Image Selection - Input + Submit handling -----------------------------------
   handleKeep = (finalImage) => {
     const imageList = [...this.state.imageResults];
 
@@ -162,10 +160,7 @@ class App extends Component {
   };
 
   render() {
-    // Conditional statements
-    // If the bandNameCapture & the finalImageCapture are both not empty strings, render the finalImageCapture and the bandNameCapture
-
-    // Conpyright for footer
+    // Copyright for footer
     let copyright = "\u00A9";
 
     return (
@@ -210,11 +205,11 @@ class App extends Component {
                 </button>
               </div>
 
-              <div className="outputContainer">
+              <div className="imagesContainer">
                 <ul>
                   {this.state.imageResults.map((image, index) => {
                     return (
-                      <StagingArea
+                      <ImageSelection
                         url={image.src.medium}
                         selectImage={() => this.handleKeep(index)}
                         key={index}
@@ -224,17 +219,8 @@ class App extends Component {
                 </ul>
               </div>
 
-              {this.state.bandNameCapture !== "" &&
-                this.state.finalImageCapture !== "" && (
-                  <div>
-                    <p className="conf">Good choice!</p>
-                    <p className="conf">Want to see this in action</p>
-                    <button
-                      className="resetButton"
-                      type="reset"
-                      onClick={this.handleReset}
-                    >start ove</button>
-                  </div>
+              {this.state.bandNameCapture !== "" && this.state.finalImageCapture !== "" && (
+                  <StagingArea />
                 )}
             </section>
 
