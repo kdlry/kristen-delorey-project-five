@@ -89,6 +89,15 @@ p {
   line-height: 20px;
 }
 
+p.conf {
+  color: #ff481f;
+}
+
+p.conf span {
+  font-size: 2.0rem;
+  color: #ff481f;
+}
+
 footer p {
   text-align: center; 
 }
@@ -109,7 +118,6 @@ label {
   font-weight: 500;
   color: #df6347;
   margin-bottom: 20px;
-
 }
 
 input::placeholder {
@@ -196,8 +204,11 @@ span .fa-stack-1x:focus {
   font-size: 1.6rem;
 }
 
-.swal2-confirm,
-.swal2-styled {
+.swal-button {
+  background: yellow;
+}
+
+button.swal2-styled {
     letter-spacing: 1px;
     font-weight: 500;
     background-color: #e87e75;
@@ -235,6 +246,11 @@ form {
   display: flex;
   justify-content: center;
   align-items: center
+}
+
+p.conf {
+  text-align: center;
+  padding-bottom: 25px;
 }
 
 .inputContainer {

@@ -163,6 +163,7 @@ class App extends Component {
 
   render() {
     // Conditional statements
+    // If the bandNameCapture & the finalImageCapture are both not empty strings, render the finalImageCapture and the bandNameCapture
 
     // Conpyright for footer
     let copyright = "\u00A9";
@@ -187,6 +188,13 @@ class App extends Component {
                   saveBandValue={this.handleBandSubmit}
                 />
 
+                {this.state.bandNameCapture !== "" && (
+                  <p className="conf">
+                    Cool beans! Your band is called:{" "}
+                    <span>{this.state.bandNameCapture}</span>
+                  </p>
+                )}
+
                 <ImageForm
                   imageValue={this.state.imageSearch}
                   setImageValue={this.handleImageValue}
@@ -197,7 +205,9 @@ class App extends Component {
                   className="resetButton"
                   type="reset"
                   onClick={this.handleReset}
-                >start over</button>
+                >
+                  start over
+                </button>
               </div>
 
               <div className="outputContainer">
@@ -213,6 +223,19 @@ class App extends Component {
                   })}
                 </ul>
               </div>
+
+              {this.state.bandNameCapture !== "" &&
+                this.state.finalImageCapture !== "" && (
+                  <div>
+                    <p className="conf">Good choice!</p>
+                    <p className="conf">Want to see this in action</p>
+                    <button
+                      className="resetButton"
+                      type="reset"
+                      onClick={this.handleReset}
+                    >start ove</button>
+                  </div>
+                )}
             </section>
 
             {/* <section>
