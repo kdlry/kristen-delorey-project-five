@@ -38,10 +38,6 @@ a {
     display: inline-block;
 }
 
-button {
-  line-height: 0px;
-}
-
 img {
     width: 100%;
     display: block;
@@ -140,7 +136,7 @@ input {
   text-transform: uppercase;
   border: 2px transparent solid;
   border-radius: 10px;
-  padding: 20px 15px;
+  padding: 10px 15px;
   background: #df6347;
   color: #fafafa;
 }
@@ -186,7 +182,7 @@ span .fa-stack-1x:focus {
   text-transform: uppercase;
   border: 2px transparent solid;
   border-radius: 10px;
-  padding: 20px 8px;
+  padding: 8px 8px;
   background: #f59c88;
   color: #fafafa;
 }
@@ -235,6 +231,7 @@ section {
   padding: 75px 0;
 }
 
+/* Forms + inputs ------- */
 .formInputs {
   display: flex;
   flex-direction: column;
@@ -261,10 +258,12 @@ p.conf {
   margin-right: 75px;
 }
 
+/* Reset button  ------- */
 .resetButton {
   margin: 30px auto;
 }
 
+/* Image results  ------- */
 .imagesContainer {
   margin-top: 50px;
 }
@@ -293,11 +292,40 @@ p.conf {
   right: 5px;
 }
 
+/* Staging area  ------- */
 .finalConf {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.finalizeButton {
+/* Vinyl records ------- */
+.vinylOutput {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.vinylRecord {
+  position: relative;
+  margin:  0 40px 40px 0;
+}
+
+.vinylRecord img {
+  height: 450px;
+  width: 450px;
+  object-fit: cover;
+}
+
+.vinylRecord p {
+  line-height: 100%;
+  font-family: 'alba', sans-serif;
+  font-size: 5rem;
+  color: #fafafa;
+  text-shadow:1px 1px 10px #ffadad, 1px 1px 10px #ffadad;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  z-index: 5;
 }

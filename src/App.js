@@ -17,6 +17,7 @@ class App extends Component {
       imageSearchCapture: "",
       imageResults: [],
       finalImageCapture: "",
+      buttonClicked: false,
       // vinylImages: [],
     };
   }
@@ -94,7 +95,7 @@ class App extends Component {
     })
       .then((res) => {
         let apiResults = res.data.photos;
-
+        console.log(res);
         if (res.data.total_results == 0) {
           Swal.fire({
             title: "No results",
@@ -109,14 +110,15 @@ class App extends Component {
         });
       })
       .catch((err) => {
-        if (err.response && this.state.bandNameCapture !== '') {
+        if (err.response && this.state.bandNameCapture !== "") {
           Swal.fire({
             title: "Missing info",
-            text: "Looks like the input field is empty... try addind a keyword.",
+            text:
+              "Looks like the input field is empty... try addind a keyword.",
             icon: "error",
             confirmButtonText: "Got it!",
           });
-        } 
+        }
       });
 
     this.setState({
@@ -147,10 +149,8 @@ class App extends Component {
     const updatedList = imageList.filter((_, index) => {
       return finalImage === index;
     });
-    console.log(updatedList);
 
     const selectedImage = updatedList[0].src.medium;
-
     this.state.finalImageCapture = selectedImage;
 
     this.setState({
@@ -159,9 +159,26 @@ class App extends Component {
     });
   };
 
+  // Staging Area - Submit handling -----------------------------------
+  handleVinylRender = () => {
+
+    const {bandNameCapture: band, finalImageCapture: image} = this.state;
+    const album = {
+      band,
+      image,
+      // label: ,
+      // record: ,
+
+    }
+
+    this.setState({
+      buttonClicked: true,
+    });
+  }  
+
   render() {
     // Copyright for footer
-    let copyright = "\u00A9";
+    const copyright = "\u00A9";
 
     return (
       <div className="App">
@@ -219,17 +236,32 @@ class App extends Component {
                 </ul>
               </div>
 
-              {this.state.bandNameCapture !== "" && this.state.finalImageCapture !== "" && (
-                  <StagingArea />
+              {this.state.bandNameCapture !== "" &&
+                this.state.finalImageCapture !== "" && (
+                  <StagingArea createVinyl={this.handleVinylRender} />
                 )}
             </section>
 
-            {/* <section>
-              <div>
-                <img src={this.state.finalImageCapture} /> 
-              <p>{this.state.bandNameCapture}</p>
-              </div>
-            </section> */}
+            {this.state.buttonClicked === true && (
+              <section className="vinylOutput">
+                <div className="vinylRecord">
+                  <p>{this.state.bandNameCapture}</p>
+                  <img src={this.state.finalImageCapture} alt="Vinyl record" />
+                </div>
+                <div className="vinylRecord">
+                  <p>{this.state.bandNameCapture}</p>
+                  <img src={this.state.finalImageCapture} alt="Vinyl record" />
+                </div>
+                <div className="vinylRecord">
+                  <p>{this.state.bandNameCapture}</p>
+                  <img src={this.state.finalImageCapture} alt="Vinyl record" />
+                </div>
+                <div className="vinylRecord">
+                  <p>{this.state.bandNameCapture}</p>
+                  <img src={this.state.finalImageCapture} alt="Vinyl record" />
+                </div>
+              </section>
+            )}
           </div>
         </main>
 
