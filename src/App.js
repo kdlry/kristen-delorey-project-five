@@ -246,19 +246,24 @@ class App extends Component {
               <section className="vinylOutput">
                 <div className="vinylRecord">
                   <p>{this.state.bandNameCapture}</p>
-                  <img src={this.state.finalImageCapture} alt="Vinyl record" />
+                  <img className="vinylCover" src={this.state.finalImageCapture} alt="Vinyl record cover" />
+                  <img className="vinylLabel" src="./assets/vinylLabel.png" alt="Vinyl record label" />
+                  <img className="vinylRecord" src="./assets/vinylRecord.png" alt="Vinyl record" />
                 </div>
                 <div className="vinylRecord">
                   <p>{this.state.bandNameCapture}</p>
-                  <img src={this.state.finalImageCapture} alt="Vinyl record" />
+                  <img className="vinylCover" src={this.state.finalImageCapture} alt="Vinyl record" />
+                  <img className="vinylLabel" src="./assets/vinylLabel.png" alt="Vinyl record label icon" />
                 </div>
                 <div className="vinylRecord">
                   <p>{this.state.bandNameCapture}</p>
-                  <img src={this.state.finalImageCapture} alt="Vinyl record" />
+                  <img className="vinylCover" src={this.state.finalImageCapture} alt="Vinyl record" />
+                  <img className="vinylLabel" src="./assets/vinylLabel.png" alt="Vinyl record label icon" />
                 </div>
                 <div className="vinylRecord">
                   <p>{this.state.bandNameCapture}</p>
-                  <img src={this.state.finalImageCapture} alt="Vinyl record" />
+                  <img className="vinylCover" src={this.state.finalImageCapture} alt="Vinyl record" />
+                  <img className="vinylLabel" src="./assets/vinylLabel.png" alt="Vinyl record label icon" />
                 </div>
               </section>
             )}

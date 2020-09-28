@@ -309,23 +309,44 @@ p.conf {
 
 .vinylRecord {
   position: relative;
-  margin:  0 40px 40px 0;
+  margin:  0 185px 40px 0;
+  border: red solid 2px;
 }
 
-.vinylRecord img {
-  height: 450px;
-  width: 450px;
+img.vinylCover {
+  height: 350px;
+  width: 350px;
   object-fit: cover;
+  position: relative;
+  z-index: 20;
 }
 
 .vinylRecord p {
   line-height: 100%;
   font-family: 'alba', sans-serif;
-  font-size: 5rem;
+  font-size: 4rem;
   color: #fafafa;
   text-shadow:1px 1px 10px #ffadad, 1px 1px 10px #ffadad;
   position: absolute;
   top: 25px;
   left: 25px;
-  z-index: 5;
+  z-index: 30;
+}
+
+img.vinylLabel {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  z-index: 30;
+  height: 110px;
+  width: 110px;
+}
+
+img.vinylRecord {
+  position: absolute;
+  bottom: -30px;
+  right: -300px;
+  z-index: 10;
+  height: 425px;
+  width: 425px;
 }
