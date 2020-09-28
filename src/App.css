@@ -310,7 +310,6 @@ p.conf {
 .vinylRecord {
   position: relative;
   margin:  0 185px 40px 0;
-  border: red solid 2px;
 }
 
 img.vinylCover {
@@ -338,15 +337,15 @@ img.vinylLabel {
   bottom: 25px;
   right: 25px;
   z-index: 30;
-  height: 110px;
-  width: 110px;
+  height: 75px;
+  width: 75px;
 }
 
 img.vinylRecord {
   position: absolute;
   bottom: -30px;
-  right: -300px;
+  right: -325px;
   z-index: 10;
-  height: 425px;
-  width: 425px;
+  height: 325px;
+  width: 325px;
 }
