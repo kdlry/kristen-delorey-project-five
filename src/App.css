@@ -82,15 +82,21 @@ h1 {
 /* Text and link styles ----------------------- */
 p {
   letter-spacing: 1px;
-  line-height: 25px;
+  line-height: 30px;
 }
 
-.bandForm p,
-.stepTwo p {
-  font-size: 3rem;
+.stepOne p,
+.stepTwo p,
+.stepThree p {
+  font-size: clamp(2.5rem, 2vw, 3.5rem);
   font-weight: 700;
   text-align: center;
   color: #d66c55;
+}
+
+.bandForm p {
+  font-size: 1.6rem;
+  color: #e9846d;
 }
 
 footer p {
@@ -109,16 +115,10 @@ a:focus {
 } 
 
 /* Form input styles ----------------------- */
-label {
-  font-size: 2rem;
-  font-weight: 500;
-  color: #df6347;
-  margin-bottom: 20px;
-}
-
 input::placeholder {
+  font-size: 2rem;
   letter-spacing: 1.5px;
-  color: #9a9a9a;
+  color: #fc9191;
 }
 
 input {
@@ -227,12 +227,6 @@ main {
 }
 
 /* Reset button  ------- */
-.resetButton {
-  position: sticky;
-  margin:  20px 0 0 20px;
-}
-
-
 .resetContainer {
   position: -webkit-sticky; 
   position: sticky; 
@@ -240,38 +234,55 @@ main {
   z-index: 5;
 }
 
+.resetButton {
+  position: sticky;
+  margin:  20px 0 0 20px;
+}
+
+
 section {
   padding: 75px 0;
 }
 
-.bandForm {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
+input {
+  margin-right: 25px;
 }
 
-form {
+.bandFormContainer {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-}
-
-.bandForm p {
-  margin-bottom: 50px;
-}
-
-.imageForm {
+  align-items: center;
   margin-top: 50px;
+}
+
+.bandFormContainer p {
+  align-self: flex-start;
+  padding-top: 20px;
+  margin-bottom: 0;
+}
+
+.nameButton {
+  margin-bottom: 50px;
 }
 
 .stepTwo p {
   text-align: center;
 }
 
-.formContainer {
+.imageForm {
   display: flex;
-  flex-direction: column;
-  margin-right: 75px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+
+.searchImageButton {
+  align-self: flex-start;
+}
+
+
+.stepThree p {
+  margin: 40px 0;
 }
 
 /* Image results  ------- */
@@ -304,7 +315,7 @@ form {
 }
 
 /* Staging area  ------- */
-.finalConf {
+.stepThree {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -320,12 +331,12 @@ form {
 
 .vinylRecord {
   position: relative;
-  margin:  0 185px 40px 0;
+  margin:  0 150px 40px 0;
 }
 
 img.vinylCover {
-  height: 350px;
-  width: 350px;
+  height: 250px;
+  width: 250px;
   object-fit: cover;
   position: relative;
   z-index: 20;
@@ -334,7 +345,7 @@ img.vinylCover {
 .vinylRecord p {
   line-height: 100%;
   font-family: 'alba', sans-serif;
-  font-size: 4rem;
+  font-size: 2.5rem;
   color: #fafafa;
   text-shadow:1px 1px 10px #ffadad, 1px 1px 10px #ffadad;
   position: absolute;
@@ -355,8 +366,8 @@ img.vinylLabel {
 img.vinylRecord {
   position: absolute;
   bottom: -30px;
-  right: -325px;
+  right: -255px;
   z-index: 10;
-  height: 325px;
-  width: 325px;
+  height: 225px;
+  width: 225px;
 }

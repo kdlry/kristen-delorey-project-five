@@ -5,9 +5,9 @@ const StagingArea = (props) => {
     const { createVinyl } = props;
 
     return (
-        <div className="finalConf">
-            <p className="conf">Nice choice!</p>
-            <p className="conf">Click on the arrow below to see your vinyl cover.</p>
+        <div className="stepThree">
+
+            <p className="conf">Good choice! Click on the arrow below to generate your vinyl cover.</p>
 
             <button
                 className="finalizeButton"
@@ -19,6 +19,7 @@ const StagingArea = (props) => {
                     <i className="fas fa-arrow-down fa-stack-1x fa-inverse"></i>
                 </span>
             </button>
+
         </div>
     )
 }
