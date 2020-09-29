@@ -85,31 +85,12 @@ p {
   line-height: 25px;
 }
 
-.bandForm p {
+.bandForm p,
+.stepTwo p {
   font-size: 3rem;
   font-weight: 700;
   text-align: center;
   color: #d66c55;
-}
-
-.imageStep p {
-  font-size: 3rem;
-  font-weight: 700;
-  text-align: center;
-  color: #d66c55;
-}
-
-.imageStep p:not(:first-child) {
-  font-size: 2.5rem;
-  color: #d66c55;
-}
-
-p.conf {
-  color: #d66c55
-}
-
-p.conf span {
-  color: #f39509;
 }
 
 footer p {
@@ -149,7 +130,9 @@ input {
 }
 
 /* Button styles ----------------------- */
-.nameButton {
+.nameButton,
+.searchImageButton,
+.resetButton {
   font-size: 1.8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -161,11 +144,24 @@ input {
 }
 
 .nameButton:hover,
-.nameButton:focus {
+.nameButton:focus,
+.searchImageButton:hover,
+.searchImageButton:focus {
   color: #ffd900;
 }
 
-.searchImageButton,
+.resetButton {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  padding: 8px 8px;
+  background: #f59c88;
+}
+
+.resetButton:hover,
+.resetButton:focus {
+  color: #fce45c;
+}
+
 .selectImageButton,
 .finalizeButton {
     border: none;
@@ -173,7 +169,6 @@ input {
     align-self: center;
 }
 
-.searchImageButton span,
 .finalizeImageButton span {
   font-size: 3rem;
 }
@@ -193,22 +188,6 @@ span .fa-stack-1x {
 span .fa-stack-1x:hover,
 span .fa-stack-1x:focus {
     color: #ffd900;
-}
-
-.resetButton {
-  font-size: 1.6rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: 2px transparent solid;
-  border-radius: 10px;
-  padding: 8px 8px;
-  background: #f59c88;
-  color: #fafafa;
-}
-
-.resetButton:hover,
-.resetButton:focus {
-  color: #fce45c;
 }
 
 /* Swal styles ----------------------- */
@@ -244,17 +223,26 @@ header {
 main {
   height: 100%;
   background: #fec9c5;
+  position: relative;
+}
+
+/* Reset button  ------- */
+.resetButton {
+  position: sticky;
+  margin:  20px 0 0 20px;
+}
+
+
+.resetContainer {
+  position: -webkit-sticky; 
+  position: sticky; 
+  top: 0;
+  z-index: 5;
 }
 
 section {
   padding: 75px 0;
 }
-
-/* Forms + inputs ------- */
-/* .formInputs {
-  display: flex;
-  flex-direction: column;
-} */
 
 .bandForm {
   display: flex;
@@ -276,20 +264,14 @@ form {
   margin-top: 50px;
 }
 
-p.conf {
+.stepTwo p {
   text-align: center;
-  padding-bottom: 25px;
 }
 
 .formContainer {
   display: flex;
   flex-direction: column;
   margin-right: 75px;
-}
-
-/* Reset button  ------- */
-.resetButton {
-  margin: 30px auto;
 }
 
 /* Image results  ------- */

@@ -24,18 +24,16 @@ class App extends Component {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const dbRef = firebase.database().ref();
 
-    dbRef.on('value', (response) => {
-
+    dbRef.on("value", (response) => {
       const newVinylFinal = [];
       const data = response.val();
 
       console.log(data);
 
       for (let key in data) {
-
         // push data as an object with key property
         newVinylFinal.push({
           key: key,
@@ -43,22 +41,32 @@ class App extends Component {
           image: data[key].image,
           label: data[key].label,
           record: data[key].record,
-        })
+        });
       }
 
       // update our React state for books
-      this.setState ({
-        vinylFinal: newVinylFinal
+      this.setState({
+        vinylFinal: newVinylFinal,
       });
 
       console.log(this.state.vinylFinal);
     });
   }
 
+  handleHide = () => {
+    this.setState({
+      isActive: false,
+    });
+  };
+
+  handleShow = () => {
+    this.setState({
+      isActive: true,
+    });
+  };
 
   // Band Form - Input + submit handling -----------------------------------
   handleBandValue = (e) => {
-
     this.setState({
       bandName: e.target.value,
     });
@@ -68,6 +76,7 @@ class App extends Component {
     e.preventDefault();
 
     if (this.state.bandName === "") {
+
       Swal.fire({
         title: "Missing info",
         text: "You need a band name to start.",
@@ -84,7 +93,8 @@ class App extends Component {
       bandNameCapture: bandNameValue,
     });
 
-    console.log(this.state.bandNameCapture);
+    this.handleHide();
+    // console.log(this.state.bandNameCapture);
   };
 
   // Image Form - Input + submit handling -----------------------------------
@@ -94,7 +104,7 @@ class App extends Component {
       imageSearch: e.target.value,
     });
 
-    console.log(this.stateImageSearchCapture);
+    // console.log(this.stateImageSearchCapture);
   };
 
   handleImageSubmit = (e) => {
@@ -119,7 +129,7 @@ class App extends Component {
 
     // API Call - using image keyword search
     const apiAuth = "563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222";
-    const apiURL = "https://api.pexels.com/v1/search";   
+    const apiURL = "https://api.pexels.com/v1/search";
 
     axios({
       method: "GET",
@@ -164,6 +174,8 @@ class App extends Component {
     this.setState({
       imageSearch: "",
     });
+
+    this.handleHide();
   };
 
   // Reset button handling -----------------------------------
@@ -205,8 +217,10 @@ class App extends Component {
       band,
       image,
       label: "./assets/vinylLabel.png",
-      record: "https://drive.google.com/uc?export=view&id=1jx-571vPoGr3N79uBbkVazJv107Qxisv",
-      label: "https://drive.google.com/uc?export=view&id=1BK9JMkP6zPkG993koRQ6kQn6pwrfE-Lu",
+      record:
+        "https://drive.google.com/uc?export=view&id=1jx-571vPoGr3N79uBbkVazJv107Qxisv",
+      label:
+        "https://drive.google.com/uc?export=view&id=1BK9JMkP6zPkG993koRQ6kQn6pwrfE-Lu",
     };
     const dbRef = firebase.database().ref();
 
@@ -215,10 +229,9 @@ class App extends Component {
     this.setState({
       buttonClicked: true,
     });
-  }  
+  };
 
   render() {
-    
     // Copyright for footer
     const copyright = "\u00A9";
 
@@ -233,24 +246,32 @@ class App extends Component {
         </header>
 
         <main>
+          <div className="resetContainer">
+            <button
+              className="resetButton"
+              type="reset"
+              onClick={this.handleReset}
+            >
+              start over
+            </button>
+          </div>
+
           <div className="wrapper">
             <section>
-              {/* {this.state.handleHide === true && (
+              {this.state.isActive === true && (
+                <div className="stepOne">
+                  <BandForm
+                    bandValue={this.state.bandName}
+                    setBandValue={this.handleBandValue}
+                    saveBandValue={this.handleBandSubmit}
+                  />
+                </div>
+              )}
 
-              )} */}
-              <div className="formInputs">
-                <BandForm
-                  bandValue={this.state.bandName}
-                  setBandValue={this.handleBandValue}
-                  saveBandValue={this.handleBandSubmit}
-                />
-
-                {this.state.bandNameCapture !== "" && (
-                  <div className="imageStep">
-                    <p className="conf">
-                      Ok. So, we're going with <span>{this.state.bandNameCapture}...</span></p>
-                    <p>How about an image for your vinyl sleeve?</p> 
-                    <p>Search for a keyword below.</p> 
+              {this.state.bandNameCapture !== "" &&
+                this.state.isActive === false && (
+                  <div className="stepTwo">
+                    <p>How about an image for your vinyl sleeve?</p>
                     <ImageForm
                       imageValue={this.state.imageSearch}
                       setImageValue={this.handleImageValue}
@@ -258,15 +279,6 @@ class App extends Component {
                     />
                   </div>
                 )}
-
-                {/* <button
-                  className="resetButton"
-                  type="reset"
-                  onClick={this.handleReset}
-                >
-                  start over
-                </button> */}
-              </div>
 
               <div className="imagesContainer">
                 <ul>

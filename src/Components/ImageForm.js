@@ -17,7 +17,7 @@ const ImageForm = (props) => {
                         placeholder="ex: Fluffy clouds" />
                 </div>
                 <div>
-                    <button className="searchImageButton"
+                    {/* <button className="searchImageButton"
                         onClick={saveImageValue}
                         type='submit'
                         aria-label="click here to search for keyword">
@@ -25,6 +25,12 @@ const ImageForm = (props) => {
                             <i className="fas fa-circle fa-stack-2x"></i>
                             <i className="fas fa-search fa-stack-1x fa-inverse"></i>
                         </span>
+                    </button> */}
+
+                    <button 
+                        className="searchImageButton"
+                        type="submit" 
+                        onClick={saveImageValue}>submit
                     </button>
                         
                 </div>
