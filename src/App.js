@@ -16,7 +16,7 @@ class App extends Component {
       bandName: "",
       bandNameCapture: "",
       imageSearch: "",
-      imageSearchCapture: "",
+      // imageSearchCapture: "",
       imageResults: [],
       finalImageCapture: "",
       buttonClicked: false,
@@ -83,18 +83,22 @@ class App extends Component {
         icon: "error",
         confirmButtonText: "Okay",
       });
+
+    } else {
+      // const bandNameValue = this.state.bandName;
+      // this.state.bandNameCapture = bandNameValue;
+  
+      this.setState({
+        bandNameCapture: this.state.bandName,
+      }, () => {this.setState({
+        bandName: "",
+      })
+      });
+  
+      this.handleHide();
+      // console.log(this.state.bandNameCapture);
     }
 
-    const bandNameValue = this.state.bandName;
-    this.state.bandNameCapture = bandNameValue;
-
-    this.setState({
-      bandName: "",
-      bandNameCapture: bandNameValue,
-    });
-
-    this.handleHide();
-    // console.log(this.state.bandNameCapture);
   };
 
   // Image Form - Input + submit handling -----------------------------------
@@ -110,22 +114,22 @@ class App extends Component {
   handleImageSubmit = (e) => {
     e.preventDefault();
 
-    const imageValue = this.state.imageSearch;
-    this.state.imageSearchCapture = imageValue;
+    // const imageValue = this.state.imageSearch;
+    // this.state.imageSearchCapture = imageValue;
 
-    if (this.state.bandNameCapture === "") {
-      Swal.fire({
-        title: "Missing info",
-        text: "You need a band name to start",
-        icon: "error",
-        confirmButtonText: "Okay!",
-      });
-    }
+    // if (this.state.bandNameCapture === "") {
+    //   Swal.fire({
+    //     title: "Missing info",
+    //     text: "You need a band name to start",
+    //     icon: "error",
+    //     confirmButtonText: "Okay!",
+    //   });
+    // }
 
-    this.setState({
-      imageSearch: "",
-      imageSearchCapture: imageValue,
-    });
+    // this.setState({
+    //   imageSearch: "",
+    //   imageSearchCapture: imageValue,
+    // })
 
     // API Call - using image keyword search
     const apiAuth = "563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222";
@@ -139,7 +143,7 @@ class App extends Component {
       url: apiURL,
       dataResponse: "json",
       params: {
-        query: this.state.imageSearchCapture,
+        query: this.state.imageSearch,
         per_page: 6,
       },
     })
@@ -153,29 +157,24 @@ class App extends Component {
             icon: "warning",
             confirmButtonText: "Okay.",
           });
-        }
+        } else {
+          this.setState({
+            imageResults: apiResults,
+            imageSearch: "",
+          });
 
-        this.setState({
-          imageResults: apiResults,
-        });
+          this.handleHide();
+        }
       })
       .catch((err) => {
-        if (err.response && this.state.bandNameCapture !== "") {
-          Swal.fire({
-            title: "Missing info",
-            text:
-              "Looks like the input field is empty... try addind a keyword.",
-            icon: "error",
-            confirmButtonText: "Got it!",
-          });
-        }
+        console.log(err);
+        Swal.fire({
+          title: "Missing info",
+          text: "Looks like the input field is empty... try addind a keyword.",
+          icon: "error",
+          confirmButtonText: "Got it!",
+        });        
       });
-
-    this.setState({
-      imageSearch: "",
-    });
-
-    this.handleHide();
   };
 
   // Reset button handling -----------------------------------
@@ -216,6 +215,7 @@ class App extends Component {
     const vinyl = {
       band,
       image,
+      // timestamp: (javascript date syntax)
       label: "./assets/vinylLabel.png",
       record:
         "https://drive.google.com/uc?export=view&id=1jx-571vPoGr3N79uBbkVazJv107Qxisv",

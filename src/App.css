@@ -44,6 +44,10 @@ img {
     height: auto;
 }
 
+*:focus {
+    outline: none;
+}
+
 .wrapper {
   width: 90%;
   max-width: 1250px;
@@ -115,18 +119,22 @@ a:focus {
 } 
 
 /* Form input styles ----------------------- */
-input::placeholder {
-  font-size: 2rem;
-  letter-spacing: 1.5px;
-  color: #fc9191;
-}
-
 input {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ff9a01;
   padding: 10px;
   width: 350px;
   background: #fec9c5;
   border: none;
   border-bottom: 2px solid #df6347;
+}
+
+input::placeholder {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  color: #fc9191;
 }
 
 /* Button styles ----------------------- */
@@ -178,7 +186,7 @@ input {
 }
 
 span .fa-stack-2x {
-    color: #df6347;
+    color: #f3b238;
 }
 
 span .fa-stack-1x {
@@ -187,7 +195,7 @@ span .fa-stack-1x {
 
 span .fa-stack-1x:hover,
 span .fa-stack-1x:focus {
-    color: #ffd900;
+    color: #df6347;
 }
 
 /* Swal styles ----------------------- */
@@ -231,7 +239,7 @@ main {
   position: -webkit-sticky; 
   position: sticky; 
   top: 0;
-  z-index: 5;
+  z-index: 100;
 }
 
 .resetButton {
@@ -239,9 +247,8 @@ main {
   margin:  20px 0 0 20px;
 }
 
-
 section {
-  padding: 75px 0;
+  padding: 50px 0;
 }
 
 input {
@@ -349,18 +356,18 @@ img.vinylCover {
   color: #fafafa;
   text-shadow:1px 1px 10px #ffadad, 1px 1px 10px #ffadad;
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 15px;
+  left: 15px;
   z-index: 30;
 }
 
 img.vinylLabel {
   position: absolute;
-  bottom: 25px;
-  right: 25px;
+  bottom: 15px;
+  right: 15px;
   z-index: 30;
-  height: 75px;
-  width: 75px;
+  height: 65px;
+  width: 65px;
 }
 
 img.vinylRecord {

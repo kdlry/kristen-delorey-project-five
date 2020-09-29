@@ -7,7 +7,7 @@ const StagingArea = (props) => {
     return (
         <div className="stepThree">
 
-            <p className="conf">Good choice! Click on the arrow below to generate your vinyl cover.</p>
+            <p className="conf">Click on the arrow below to print your vinyl cover.</p>
 
             <button
                 className="finalizeButton"
