@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import firebase from './Components/firebase';
 import BandForm from './Components/BandForm';
 import ImageForm from './Components/ImageForm';
 import ImageSelection from './Components/ImageSelection';
@@ -11,6 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      isActive: true,
       bandName: "",
       bandNameCapture: "",
       imageSearch: "",
@@ -18,12 +20,45 @@ class App extends Component {
       imageResults: [],
       finalImageCapture: "",
       buttonClicked: false,
-      // vinylImages: [],
+      vinylFinal: [],
     };
   }
 
+  componentDidMount () {
+    const dbRef = firebase.database().ref();
+
+    dbRef.on('value', (response) => {
+
+      const newVinylFinal = [];
+      const data = response.val();
+
+      console.log(data);
+
+      for (let key in data) {
+
+        // push data as an object with key property
+        newVinylFinal.push({
+          key: key,
+          band: data[key].band,
+          image: data[key].image,
+          label: data[key].label,
+          record: data[key].record,
+        })
+      }
+
+      // update our React state for books
+      this.setState ({
+        vinylFinal: newVinylFinal
+      });
+
+      console.log(this.state.vinylFinal);
+    });
+  }
+
+
   // Band Form - Input + submit handling -----------------------------------
   handleBandValue = (e) => {
+
     this.setState({
       bandName: e.target.value,
     });
@@ -48,17 +83,25 @@ class App extends Component {
       bandName: "",
       bandNameCapture: bandNameValue,
     });
+
+    console.log(this.state.bandNameCapture);
   };
 
   // Image Form - Input + submit handling -----------------------------------
   handleImageValue = (e) => {
+
     this.setState({
       imageSearch: e.target.value,
     });
+
+    console.log(this.stateImageSearchCapture);
   };
 
   handleImageSubmit = (e) => {
     e.preventDefault();
+
+    const imageValue = this.state.imageSearch;
+    this.state.imageSearchCapture = imageValue;
 
     if (this.state.bandNameCapture === "") {
       Swal.fire({
@@ -69,9 +112,6 @@ class App extends Component {
       });
     }
 
-    const imageValue = this.state.imageSearch;
-    this.state.imageSearchCapture = imageValue;
-
     this.setState({
       imageSearch: "",
       imageSearchCapture: imageValue,
@@ -79,7 +119,7 @@ class App extends Component {
 
     // API Call - using image keyword search
     const apiAuth = "563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222";
-    const apiURL = "https://api.pexels.com/v1/search";
+    const apiURL = "https://api.pexels.com/v1/search";   
 
     axios({
       method: "GET",
@@ -96,7 +136,7 @@ class App extends Component {
       .then((res) => {
         let apiResults = res.data.photos;
         console.log(res);
-        if (res.data.total_results == 0) {
+        if (res.data.total_results === 0) {
           Swal.fire({
             title: "No results",
             text: "Try another keyword.",
@@ -151,7 +191,6 @@ class App extends Component {
     });
 
     const selectedImage = updatedList[0].src.medium;
-    this.state.finalImageCapture = selectedImage;
 
     this.setState({
       imageResults: updatedList,
@@ -161,15 +200,17 @@ class App extends Component {
 
   // Staging Area - Submit handling -----------------------------------
   handleVinylRender = () => {
-
-    const {bandNameCapture: band, finalImageCapture: image} = this.state;
-    const album = {
+    const { bandNameCapture: band, finalImageCapture: image } = this.state;
+    const vinyl = {
       band,
       image,
-      // label: ,
-      // record: ,
+      label: "./assets/vinylLabel.png",
+      record: "https://drive.google.com/uc?export=view&id=1jx-571vPoGr3N79uBbkVazJv107Qxisv",
+      label: "https://drive.google.com/uc?export=view&id=1BK9JMkP6zPkG993koRQ6kQn6pwrfE-Lu",
+    };
+    const dbRef = firebase.database().ref();
 
-    }
+    dbRef.push(vinyl);
 
     this.setState({
       buttonClicked: true,
@@ -177,6 +218,7 @@ class App extends Component {
   }  
 
   render() {
+    
     // Copyright for footer
     const copyright = "\u00A9";
 
@@ -193,6 +235,9 @@ class App extends Component {
         <main>
           <div className="wrapper">
             <section>
+              {/* {this.state.handleHide === true && (
+
+              )} */}
               <div className="formInputs">
                 <BandForm
                   bandValue={this.state.bandName}
@@ -201,25 +246,26 @@ class App extends Component {
                 />
 
                 {this.state.bandNameCapture !== "" && (
-                  <p className="conf">
-                    Cool beans! Your band is called:{" "}
-                    <span>{this.state.bandNameCapture}</span>
-                  </p>
+                  <div className="imageStep">
+                    <p className="conf">
+                      Ok. So, we're going with <span>{this.state.bandNameCapture}...</span></p>
+                    <p>How about an image for your vinyl sleeve?</p> 
+                    <p>Search for a keyword below.</p> 
+                    <ImageForm
+                      imageValue={this.state.imageSearch}
+                      setImageValue={this.handleImageValue}
+                      saveImageValue={this.handleImageSubmit}
+                    />
+                  </div>
                 )}
 
-                <ImageForm
-                  imageValue={this.state.imageSearch}
-                  setImageValue={this.handleImageValue}
-                  saveImageValue={this.handleImageSubmit}
-                />
-
-                <button
+                {/* <button
                   className="resetButton"
                   type="reset"
                   onClick={this.handleReset}
                 >
                   start over
-                </button>
+                </button> */}
               </div>
 
               <div className="imagesContainer">
@@ -242,34 +288,31 @@ class App extends Component {
                 )}
             </section>
 
-            {this.state.buttonClicked === true && (
-              <section className="vinylOutput">
-                <div className="vinylRecord">
-                  <p>{this.state.bandNameCapture}</p>
-                  <img className="vinylCover" src={this.state.finalImageCapture} alt="Vinyl record cover" />
-                  <img className="vinylLabel" src="./assets/vinylLabel.png" alt="Vinyl record label" />
-                  <img className="vinylRecord" src="./assets/vinylRecord.png" alt="Vinyl record" />
-                </div>
-                <div className="vinylRecord">
-                  <p>{this.state.bandNameCapture}</p>
-                  <img className="vinylCover" src={this.state.finalImageCapture} alt="Vinyl record cover" />
-                  <img className="vinylLabel" src="./assets/vinylLabel.png" alt="Vinyl record label" />
-                  <img className="vinylRecord" src="./assets/vinylRecord.png" alt="Vinyl record" />
-                </div>
-                <div className="vinylRecord">
-                  <p>{this.state.bandNameCapture}</p>
-                  <img className="vinylCover" src={this.state.finalImageCapture} alt="Vinyl record cover" />
-                  <img className="vinylLabel" src="./assets/vinylLabel.png" alt="Vinyl record label" />
-                  <img className="vinylRecord" src="./assets/vinylRecord.png" alt="Vinyl record" />
-                </div>
-                <div className="vinylRecord">
-                  <p>{this.state.bandNameCapture}</p>
-                  <img className="vinylCover" src={this.state.finalImageCapture} alt="Vinyl record cover" />
-                  <img className="vinylLabel" src="./assets/vinylLabel.png" alt="Vinyl record label" />
-                  <img className="vinylRecord" src="./assets/vinylRecord.png" alt="Vinyl record" />
-                </div>
-              </section>
-            )}
+            <section className="vinylOutput">
+              {this.state.buttonClicked === true &&
+                this.state.vinylFinal.map((item) => {
+                  return (
+                    <div className="vinylRecord">
+                      <p>{item.band}</p>
+                      <img
+                        className="vinylCover"
+                        src={item.image}
+                        alt="Vinyl record cover"
+                      />
+                      <img
+                        className="vinylLabel"
+                        src={item.label}
+                        alt="Vinyl record label"
+                      />
+                      <img
+                        className="vinylRecord"
+                        src={item.record}
+                        alt="Vinyl record"
+                      />
+                    </div>
+                  );
+                })}
+            </section>
           </div>
         </main>
 

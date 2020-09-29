@@ -8,7 +8,7 @@ const ImageForm = (props) => {
         <div className="imageForm">
             <form action="submit" id="imageForm">
                 <div className="formContainer">
-                    <label htmlFor="searchImage">FIND AN IMAGE: </label>
+                    <label htmlFor="searchImage" sr-only="enter band name here"></label>
                     <input
                         type="text"
                         id="searchImage"
