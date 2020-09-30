@@ -30,8 +30,6 @@ class App extends Component {
       const newVinylFinal = [];
       const data = response.val();
 
-      console.log(data);
-
       for (let key in data) {
         newVinylFinal.push({
           key: key,
@@ -46,7 +44,6 @@ class App extends Component {
         vinylFinal: newVinylFinal,
       });
 
-      console.log(this.state.vinylFinal);
     });
   }
 
@@ -124,7 +121,7 @@ class App extends Component {
     })
       .then((res) => {
         let apiResults = res.data.photos;
-        console.log(res);
+
         if (res.data.total_results === 0) {
           Swal.fire({
             title: "No results",
@@ -141,8 +138,7 @@ class App extends Component {
           this.handleHide();
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         Swal.fire({
           title: "Missing info",
           text: "Looks like the input field is empty... try addind a keyword.",
@@ -191,11 +187,8 @@ class App extends Component {
       band,
       image,
       // timestamp: (javascript date syntax)
-      label: "./assets/vinylLabel.png",
-      record:
-        "https://drive.google.com/uc?export=view&id=1jx-571vPoGr3N79uBbkVazJv107Qxisv",
-      label:
-        "https://drive.google.com/uc?export=view&id=1BK9JMkP6zPkG993koRQ6kQn6pwrfE-Lu",
+      record: "https://drive.google.com/uc?export=view&id=1jx-571vPoGr3N79uBbkVazJv107Qxisv",
+      label: "https://drive.google.com/uc?export=view&id=1BK9JMkP6zPkG993koRQ6kQn6pwrfE-Lu",
     };
     const dbRef = firebase.database().ref();
 
@@ -208,7 +201,6 @@ class App extends Component {
 
   // Remove vinyl from Firebase -----------------------------------
   handleVinylRemove = (vinylKey) => {
-    console.log(vinylKey, 'I work');
 
     const dbRef = firebase.database().ref();
 
@@ -232,13 +224,7 @@ class App extends Component {
 
         <main>
           <div className="resetContainer">
-            <button
-              className="resetButton"
-              type="reset"
-              onClick={this.handleReset}
-            >
-              start over
-            </button>
+            <button className="resetButton" type="reset" onClick={this.handleReset}>start over</button>
           </div>
 
           <div className="wrapper">
@@ -291,34 +277,17 @@ class App extends Component {
                   return (
                     <div className="vinylRecord">
                       <p>{item.band}</p>
-                      <img
-                        className="vinylCover"
-                        src={item.image}
-                        alt="Vinyl record cover"
-                      />
-                      <img
-                        className="vinylLabel"
-                        src={item.label}
-                        alt="Vinyl record label"
-                      />
-                      <img
-                        className="vinylRecord"
-                        src={item.record}
-                        alt="Vinyl record"
-                      />
+                      <img className="vinylCover" src={item.image} alt="Vinyl record cover"/>
+                      <img className="vinylLabel" src={item.label} alt="Vinyl record label"/>
+                      <img className="vinylRecord" src={item.record} alt="Vinyl record"/>
                       <button
                         className="removeButton"
-                        onClick={() => {
-                          this.handleVinylRemove(item.key);
-                        }}
                         type="submit"
                         aria-label="click here to see your vinyl record cover"
-                      >
-                        <span
-                          className="fa-stack fa-2x"
-                          role="img"
-                          aria-hidden="true"
-                        >
+                        onClick={() => {
+                          this.handleVinylRemove(item.key);
+                        }}>
+                        <span className="fa-stack fa-2x" role="img" aria-hidden="true">
                           <i className="fas fa-circle fa-stack-2x"></i>
                           <i className="fas fa-times fa-stack-1x fa-inverse"></i>
                         </span>
@@ -336,7 +305,7 @@ class App extends Component {
             <a href="https://junocollege.com">Juno College</a>
           </p>
           <p>Copyright {copyright} 2020 Juno College of Technology</p>
-          <p class="footerSocial">
+          <p className="footerSocial">
             Follow me: <a href="https://twitter.com/kdlry">Twitter</a>
             <a href="https://github.com/kdlry">Github</a>
             <a href="https://www.linkedin.com/in/kristen-delorey">LinkedIn</a>
