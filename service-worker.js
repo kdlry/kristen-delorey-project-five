@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/kristen-delorey-project-five/precache-manifest.91168d20d9f178f77d6e50f691d54e4b.js"
+  "/kristen-delorey-project-five/precache-manifest.eb4a637e3ee03081a759a3c04a2316d2.js"
 );
 
 self.addEventListener('message', (event) => {

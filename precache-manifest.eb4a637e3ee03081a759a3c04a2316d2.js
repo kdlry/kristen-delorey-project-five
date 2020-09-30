@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ec18e969cf46b4af1a3ed7e783a6f677",
+    "revision": "668edad252bb40593a0d5b9e51a11427",
     "url": "/kristen-delorey-project-five/index.html"
   },
   {
-    "revision": "a0f332838810ff6ecf28",
-    "url": "/kristen-delorey-project-five/static/css/main.c085fca2.chunk.css"
+    "revision": "b04ad733d192ae871eb1",
+    "url": "/kristen-delorey-project-five/static/css/main.b592cec7.chunk.css"
   },
   {
-    "revision": "153e5f1c6d3709b65cba",
-    "url": "/kristen-delorey-project-five/static/js/2.588d4dc2.chunk.js"
+    "revision": "65fbac6bf22d2a76646f",
+    "url": "/kristen-delorey-project-five/static/js/2.1a867d90.chunk.js"
   },
   {
     "revision": "70d88436874ad6f0b4ff8dc0e5c19c4e",
-    "url": "/kristen-delorey-project-five/static/js/2.588d4dc2.chunk.js.LICENSE.txt"
+    "url": "/kristen-delorey-project-five/static/js/2.1a867d90.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a0f332838810ff6ecf28",
-    "url": "/kristen-delorey-project-five/static/js/main.28a5eecb.chunk.js"
+    "revision": "b04ad733d192ae871eb1",
+    "url": "/kristen-delorey-project-five/static/js/main.d3f6dba0.chunk.js"
   },
   {
     "revision": "18ae56dab328b966075b",
