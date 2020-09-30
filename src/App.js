@@ -19,11 +19,11 @@ class App extends Component {
     super();
     this.state = {
       isActive: true,
-      bandName: "",
-      bandNameCapture: "",
-      imageSearch: "",
+      bandName: '',
+      bandNameCapture: '',
+      imageSearch: '',
       imageResults: [],
-      finalImageCapture: "",
+      finalImageCapture: '',
       buttonClicked: false,
       vinylFinal: [],
     };
@@ -71,19 +71,19 @@ class App extends Component {
     e.preventDefault();
 
     // Error message for empty input string ---------
-    if (this.state.bandName === "") {
+    if (this.state.bandName === '') {
       Swal.fire({
-        title: "Missing info",
-        text: "You need a band name to start.",
-        icon: "error",
-        confirmButtonText: "Okay",
+        title: 'Missing info',
+        text: 'You need a band name to start.',
+        icon: 'error',
+        confirmButtonText: 'Okay',
       });
-      
+
     } else {
       // Capture value and reset input ---------
       this.setState({ bandNameCapture: this.state.bandName }, () => {
         this.setState({
-          bandName: "",
+          bandName: '',
         });
       });
 
@@ -103,8 +103,8 @@ class App extends Component {
     e.preventDefault();
 
     // API call using keyword searched ---------
-    const apiAuth = "563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222";
-    const apiURL = "https://api.pexels.com/v1/search";
+    const apiAuth = '563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222';
+    const apiURL = 'https://api.pexels.com/v1/search';
 
     axios({
       method: "GET",
@@ -125,10 +125,10 @@ class App extends Component {
         // Error message for no results found ---------
         if (res.data.total_results === 0) {
           Swal.fire({
-            title: "No results",
-            text: "Try another keyword.",
-            icon: "warning",
-            confirmButtonText: "Okay.",
+            title: 'No results',
+            text: 'Try another keyword.',
+            icon: 'warning',
+            confirmButtonText: 'Okay.',
           });
 
         } else {
@@ -145,10 +145,10 @@ class App extends Component {
 
         // Error message for empty string ---------
         Swal.fire({
-          title: "Missing info",
-          text: "Looks like the input field is empty... try addind a keyword.",
-          icon: "error",
-          confirmButtonText: "Got it!",
+          title: 'Missing info',
+          text: 'Looks like the input field is empty... try addind a keyword.',
+          icon: 'error',
+          confirmButtonText: 'Got it!',
         });
       });
   };
@@ -158,11 +158,11 @@ class App extends Component {
 
     // Warning message for page refresh ---------
     Swal.fire({
-      title: "Are you sure you want to start over?",
-      text: "This action will reload the page and clear all inputs.",
-      icon: "question",
+      title: 'Are you sure you want to start over?',
+      text: 'This action will reload the page and clear all inputs.',
+      icon: 'question',
       showCancelButton: true,
-      confirmButtonText: "Yes",
+      confirmButtonText: 'Yes',
     }).then((result) => {
 
       // If denied, close modal
@@ -200,8 +200,8 @@ class App extends Component {
     const vinyl = {
       band,
       image,
-      record: "https://drive.google.com/uc?export=view&id=1jx-571vPoGr3N79uBbkVazJv107Qxisv",
-      label: "https://drive.google.com/uc?export=view&id=1BK9JMkP6zPkG993koRQ6kQn6pwrfE-Lu",
+      record: 'https://drive.google.com/uc?export=view&id=1jx-571vPoGr3N79uBbkVazJv107Qxisv',
+      label: 'https://drive.google.com/uc?export=view&id=1BK9JMkP6zPkG993koRQ6kQn6pwrfE-Lu',
     };
 
     const dbRef = firebase.database().ref();
@@ -258,7 +258,7 @@ class App extends Component {
             {/* Form inputs and results section ------ */}
             <section className="vinylInput">
               
-              {/* Band form ------ */}
+              {/* BandForm Component------ */}
               {this.state.isActive === true && (
                 <div className="stepOne">
                   <BandForm
@@ -269,7 +269,7 @@ class App extends Component {
                 </div>
               )}
 
-              {/* Image form ------ */}
+              {/* ImageForm Component ------ */}
               {this.state.bandNameCapture !== "" &&
                 this.state.isActive === false && (
                   <div className="stepTwo">
@@ -282,7 +282,7 @@ class App extends Component {
                   </div>
                 )}
 
-              {/* Image results ------ */}
+              {/* ImageResults Component ------ */}
               <div className="imagesContainer">
                 <ul>
                   {this.state.imageResults.map((image, index) => {
@@ -307,7 +307,7 @@ class App extends Component {
             {/* Vinyl outputs section ------ */}
             <section className="vinylOutput">
 
-              {/* Vinyl objects from Firebase ------ */}
+              {/* Vinyl objects pulled from Firebase ------ */}
               {this.state.buttonClicked === true && this.state.vinylFinal.map((item) => {
                   return (
                     <div className="vinylRecord" key={item.key}>
@@ -335,14 +335,14 @@ class App extends Component {
 
         {/* Footer ------------- */}
         <footer>
-          <p>
-            Created by Kristen Delorey at{" "}
-            <a href="https://junocollege.com">Juno College</a>
+          <p> 
+            Created by Kristen Delorey at <a href="https://junocollege.com">Juno College</a>
           </p>
           <p>Copyright {copyright} 2020 Juno College of Technology</p>
+          
+          {/* Social media ------ */}
           <p className="footerSocial">
-            Follow me: 
-            <a href="https://twitter.com/kdlry">Twitter</a>
+            Follow me: <a href="https://twitter.com/kdlry">Twitter</a>
             <a href="https://github.com/kdlry">Github</a>
             <a href="https://www.linkedin.com/in/kristen-delorey">LinkedIn</a>
           </p>
