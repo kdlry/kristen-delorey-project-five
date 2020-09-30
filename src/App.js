@@ -156,7 +156,7 @@ class App extends Component {
   handleReset = () => {
     Swal.fire({
       title: "Are you sure you want to start over?",
-      text: "This action will reload the page and clear all inputs/outputs.",
+      text: "This action will reload the page and clear all inputs.",
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Yes",

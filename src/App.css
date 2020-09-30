@@ -105,7 +105,7 @@ h2 {
 }
 
 h3 {
-  font-size: clamp(3.5rem, 1.5vw, 4rem);
+  font-size: clamp(2.5rem, 1vw, 4rem);
   font-weight: 700;
   text-align: center;
   color: #d66c55;
@@ -127,7 +127,7 @@ p {
 }
 
 footer p {
-  color: #ffdbca;
+  color: #ffe1d3;
   font-weight: 700;
   text-align: center;
   line-height: 22px; 
@@ -141,16 +141,18 @@ a {
 a:hover,
 a:focus {
   border-bottom: 2px solid #EA593E;
+  cursor: pointer;
 }
 
 .footerSocial a {
   margin: 10px 10px 0 0;
-  color:  #fcfa9b;
+  color:  #ffde4b;
 }
 
 .footerSocial a:hover,
 .footerSocial a:focus {
-  border-bottom: 2px solid #fcfa9b;
+  border-bottom: 2px solid #ffde4b;
+  cursor: pointer;
 }
 
 /* Form inputs ------- */
@@ -158,7 +160,7 @@ input {
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #fcfa9b;
+  color: #ff661f;
   padding: 15px;
   width: 350px;
   background: #fec9c5;
@@ -168,9 +170,8 @@ input {
 
 input::placeholder {
   font-size: 2.5rem;
-  font-style: italic;
   letter-spacing: 1px;
-  color: #fffecb;
+  color: #ee9999;
 }
 
 /* Buttons ------- */
@@ -196,6 +197,7 @@ input::placeholder {
 .searchImageButton:hover,
 .searchImageButton:focus {
   filter: brightness(85%);
+  cursor: pointer;
 }
 
 .resetButton {
@@ -208,6 +210,7 @@ input::placeholder {
 .resetButton:hover,
 .resetButton:focus {
   filter: brightness(85%);
+  cursor: pointer;
 }
 
 .selectImageButton,
@@ -238,6 +241,7 @@ span .fa-stack-1x {
 span .fa-stack-1x:hover,
 span .fa-stack-1x:focus {
     color: #df6347;
+    cursor: pointer;
 }
 
 /* Modals ------- */
@@ -259,12 +263,23 @@ span .fa-stack-1x:focus {
     padding: 10px 15px;    
 }
 
+.swal2-actions .swal2-confirm:hover,
+.swal2-actions .swal2-confirm:hover {
+  cursor: pointer;
+}
+
+
 .swal2-actions .swal2-cancel {
     font-size: 1.6rem;
     letter-spacing: 1px;
     font-weight: 500;
     background-color: #e87e75;
     padding: 10px 15px;  
+}
+
+.swal2-actions .swal2-cancel:hover,
+.swal2-actions .swal2-cancel:focus {
+  cursor: pointer;
 }
 
 /* Positioning ----------------------- */
