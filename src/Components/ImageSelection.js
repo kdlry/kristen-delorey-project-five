@@ -8,6 +8,7 @@ const ImageSelection = (props) => {
             <div className="imageBox">
                 <img src={url} alt="Vinyl artwork option" />
             </div>
+
             <button className="selectImageButton"
                 onClick={selectImage}
                 type="submit"
@@ -17,6 +18,7 @@ const ImageSelection = (props) => {
                     <i className="fas fa-check fa-stack-1x fa-inverse"></i>
                 </span>
             </button>
+            
         </li>
     )
 }

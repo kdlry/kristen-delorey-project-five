@@ -244,7 +244,7 @@ span .fa-stack-1x:focus {
     cursor: pointer;
 }
 
-/* Modals ------- */
+/* Modals (error handling) ------- */
 .swal2-title {
     font-size: 2rem;
     font-weight: 500px;
@@ -267,7 +267,6 @@ span .fa-stack-1x:focus {
 .swal2-actions .swal2-confirm:hover {
   cursor: pointer;
 }
-
 
 .swal2-actions .swal2-cancel {
     font-size: 1.6rem;
@@ -421,7 +420,6 @@ img.vinylCover {
   position: relative;
   z-index: 20;
 }
-
 
 img.vinylLabel {
   height: 65px;

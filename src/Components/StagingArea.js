@@ -6,7 +6,6 @@ const StagingArea = (props) => {
 
     return (
         <div className="stepThree">
-
             <h3>Click on the arrow below to print your vinyl.</h3>
 
             <button

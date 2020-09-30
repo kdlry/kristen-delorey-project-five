@@ -103,8 +103,9 @@ class App extends Component {
     e.preventDefault();
 
     // API call using keyword searched ---------
-    const apiAuth = '563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222';
-    const apiURL = 'https://api.pexels.com/v1/search';
+    // API Source: https://www.pexels.com/api/documentation/?locale=en-US
+    const apiAuth = "563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222";
+    const apiURL = "https://api.pexels.com/v1/search";
 
     axios({
       method: "GET",
@@ -125,12 +126,11 @@ class App extends Component {
         // Error message for no results found ---------
         if (res.data.total_results === 0) {
           Swal.fire({
-            title: 'No results',
-            text: 'Try another keyword.',
-            icon: 'warning',
-            confirmButtonText: 'Okay.',
+            title: "No results",
+            text: "Try another keyword.",
+            icon: "warning",
+            confirmButtonText: "Okay.",
           });
-
         } else {
           // Capture results and reset input ---------
           this.setState({
@@ -142,13 +142,12 @@ class App extends Component {
 
       // Unsuccessful reply from API ---------
       .catch(() => {
-
         // Error message for empty string ---------
         Swal.fire({
-          title: 'Missing info',
-          text: 'Looks like the input field is empty... try addind a keyword.',
-          icon: 'error',
-          confirmButtonText: 'Got it!',
+          title: "Missing info",
+          text: "Looks like the input field is empty... try addind a keyword.",
+          icon: "error",
+          confirmButtonText: "Got it!",
         });
       });
   };
