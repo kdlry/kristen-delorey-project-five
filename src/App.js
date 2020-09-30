@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+
+// Packages -----------------------
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import firebase from './Components/firebase';
+
+// Components -----------------------
 import BandForm from './Components/BandForm';
 import ImageForm from './Components/ImageForm';
 import ImageSelection from './Components/ImageSelection';
 import StagingArea from './Components/StagingArea';
 import './App.css';
 
+
 class App extends Component {
+  // Setting properties on state object -----------------------
   constructor() {
     super();
     this.state = {
@@ -23,6 +29,7 @@ class App extends Component {
     };
   }
 
+  // Pulling object data (vinyl info) from Firebase -----------------------
   componentDidMount() {
     const dbRef = firebase.database().ref();
 
@@ -43,23 +50,17 @@ class App extends Component {
       this.setState({
         vinylFinal: newVinylFinal,
       });
-
     });
   }
 
+  // Hide components / elements on render -----------------------
   handleHide = () => {
     this.setState({
       isActive: false,
     });
   };
 
-  handleShow = () => {
-    this.setState({
-      isActive: true,
-    });
-  };
-
-  // Band Form - Input + submit handling -----------------------------------
+  // BandForm Component - Input + submit handling -----------------------
   handleBandValue = (e) => {
     this.setState({
       bandName: e.target.value,
@@ -69,6 +70,7 @@ class App extends Component {
   handleBandSubmit = (e) => {
     e.preventDefault();
 
+    // Error message for empty input string ---------
     if (this.state.bandName === "") {
       Swal.fire({
         title: "Missing info",
@@ -76,34 +78,31 @@ class App extends Component {
         icon: "error",
         confirmButtonText: "Okay",
       });
+      
     } else {
+      // Capture value and reset input ---------
+      this.setState({ bandNameCapture: this.state.bandName }, () => {
+        this.setState({
+          bandName: "",
+        });
+      });
 
-      this.setState(
-        {
-          bandNameCapture: this.state.bandName,
-        },
-        () => {
-          this.setState({
-            bandName: "",
-          });
-        }
-      );
+      // Hide component for conditional rendering below ---------
       this.handleHide();
     }
   };
 
-  // Image Form - Input + submit handling -----------------------------------
+  // ImageForm Component - Input + submit handling -----------------------
   handleImageValue = (e) => {
     this.setState({
       imageSearch: e.target.value,
     });
-
   };
 
   handleImageSubmit = (e) => {
     e.preventDefault();
 
-    // API Call - using image keyword search
+    // API call using keyword searched ---------
     const apiAuth = "563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222";
     const apiURL = "https://api.pexels.com/v1/search";
 
@@ -119,9 +118,11 @@ class App extends Component {
         per_page: 6,
       },
     })
+      // Successful reply from API ---------
       .then((res) => {
         let apiResults = res.data.photos;
 
+        // Error message for no results found ---------
         if (res.data.total_results === 0) {
           Swal.fire({
             title: "No results",
@@ -129,16 +130,20 @@ class App extends Component {
             icon: "warning",
             confirmButtonText: "Okay.",
           });
+
         } else {
+          // Capture results and reset input ---------
           this.setState({
             imageResults: apiResults,
             imageSearch: "",
           });
-
-          this.handleHide();
         }
       })
+
+      // Unsuccessful reply from API ---------
       .catch(() => {
+
+        // Error message for empty string ---------
         Swal.fire({
           title: "Missing info",
           text: "Looks like the input field is empty... try addind a keyword.",
@@ -148,8 +153,10 @@ class App extends Component {
       });
   };
 
-  // Reset button handling -----------------------------------
+  // Reset button handling -----------------------
   handleReset = () => {
+
+    // Warning message for page refresh ---------
     Swal.fire({
       title: "Are you sure you want to start over?",
       text: "This action will reload the page and clear all inputs.",
@@ -157,14 +164,18 @@ class App extends Component {
       showCancelButton: true,
       confirmButtonText: "Yes",
     }).then((result) => {
+
+      // If denied, close modal
       if (result.isDenied) {
+
+      // If confirmed, refresh page and clear inputs
       } else if (result.isConfirmed) {
         document.location.reload();
       }
     });
   };
 
-  // Image Selection - Input + Submit handling -----------------------------------
+  // ImageSelection Component - Input + submit handling -----------------------
   handleKeep = (finalImage) => {
     const imageList = [...this.state.imageResults];
 
@@ -174,45 +185,53 @@ class App extends Component {
 
     const selectedImage = updatedList[0].src.medium;
 
+    // Capture selected image ---------
     this.setState({
       imageResults: updatedList,
       finalImageCapture: selectedImage,
     });
   };
 
-  // Staging Area - Submit handling -----------------------------------
+  // StagingArea Component - Submit handling -----------------------
   handleVinylRender = () => {
+
+    // Create object to store in Firebase ---------
     const { bandNameCapture: band, finalImageCapture: image } = this.state;
     const vinyl = {
       band,
       image,
-      // timestamp: (javascript date syntax)
       record: "https://drive.google.com/uc?export=view&id=1jx-571vPoGr3N79uBbkVazJv107Qxisv",
       label: "https://drive.google.com/uc?export=view&id=1BK9JMkP6zPkG993koRQ6kQn6pwrfE-Lu",
     };
+
     const dbRef = firebase.database().ref();
 
+    // Pushing object data (vinyl info) to Firebase ---------
     dbRef.push(vinyl);
 
+    // Capture button click event for conditional rendering below ---------
     this.setState({
       buttonClicked: true,
     });
   };
 
-  // Remove vinyl from Firebase -----------------------------------
+  // Remove vinyl from Firebase -----------------------
   handleVinylRemove = (vinylKey) => {
-
     const dbRef = firebase.database().ref();
 
     dbRef.child(vinylKey).remove();
   };
 
+  // Render elements and components -----------------------
   render() {
-    // Copyright for footer
+
+    // Copyright for footer ---------
     const copyright = "\u00A9";
 
     return (
       <div className="App">
+
+        {/* Header ------------- */}
         <header>
           <div className="wrapper">
             <h1>
@@ -222,13 +241,24 @@ class App extends Component {
           </div>
         </header>
 
+        {/* Main ------------- */}
         <main>
+
+          {/* Reset button ------ */}
           <div className="resetContainer">
-            <button className="resetButton" type="reset" onClick={this.handleReset}>start over</button>
+            <button
+              className="resetButton"
+              type="reset"
+              onClick={this.handleReset}>start over
+            </button>
           </div>
 
           <div className="wrapper">
+
+            {/* Form inputs and results section ------ */}
             <section className="vinylInput">
+              
+              {/* Band form ------ */}
               {this.state.isActive === true && (
                 <div className="stepOne">
                   <BandForm
@@ -239,6 +269,7 @@ class App extends Component {
                 </div>
               )}
 
+              {/* Image form ------ */}
               {this.state.bandNameCapture !== "" &&
                 this.state.isActive === false && (
                   <div className="stepTwo">
@@ -251,6 +282,7 @@ class App extends Component {
                   </div>
                 )}
 
+              {/* Image results ------ */}
               <div className="imagesContainer">
                 <ul>
                   {this.state.imageResults.map((image, index) => {
@@ -265,40 +297,43 @@ class App extends Component {
                 </ul>
               </div>
 
-              {this.state.bandNameCapture !== "" &&
-                this.state.finalImageCapture !== "" && (
-                  <StagingArea createVinyl={this.handleVinylRender} />
-                )}
-            </section>
+              {/* Final image capture ------ */}
+              {this.state.bandNameCapture !== "" && this.state.finalImageCapture !== "" && (
+                <StagingArea createVinyl={this.handleVinylRender} />
+              )}
 
+            </section>
+            
+            {/* Vinyl outputs section ------ */}
             <section className="vinylOutput">
-              {this.state.buttonClicked === true &&
-                this.state.vinylFinal.map((item) => {
+
+              {/* Vinyl objects from Firebase ------ */}
+              {this.state.buttonClicked === true && this.state.vinylFinal.map((item) => {
                   return (
-                    <div className="vinylRecord">
+                    <div className="vinylRecord" key={item.key}>
                       <p>{item.band}</p>
-                      <img className="vinylCover" src={item.image} alt="Vinyl record cover"/>
-                      <img className="vinylLabel" src={item.label} alt="Vinyl record label"/>
-                      <img className="vinylRecord" src={item.record} alt="Vinyl record"/>
-                      <button
+                      <img className="vinylCover" src={item.image} alt="Vinyl record cover" />
+                      <img className="vinylLabel" src={item.label} alt="Vinyl record label" />
+                      <img className="vinylRecord" src={item.record} alt="Vinyl record" />
+                      <button 
                         className="removeButton"
                         type="submit"
                         aria-label="click here to see your vinyl record cover"
-                        onClick={() => {
-                          this.handleVinylRemove(item.key);
-                        }}>
-                        <span className="fa-stack fa-2x" role="img" aria-hidden="true">
-                          <i className="fas fa-circle fa-stack-2x"></i>
-                          <i className="fas fa-times fa-stack-1x fa-inverse"></i>
-                        </span>
+                        onClick={() => {this.handleVinylRemove(item.key);}}>
+                          <span className="fa-stack fa-2x" role="img" aria-hidden="true" >
+                            <i className="fas fa-circle fa-stack-2x"></i>
+                            <i className="fas fa-times fa-stack-1x fa-inverse"></i>
+                          </span>
                       </button>
                     </div>
                   );
                 })}
+
             </section>
           </div>
         </main>
 
+        {/* Footer ------------- */}
         <footer>
           <p>
             Created by Kristen Delorey at{" "}
@@ -306,7 +341,8 @@ class App extends Component {
           </p>
           <p>Copyright {copyright} 2020 Juno College of Technology</p>
           <p className="footerSocial">
-            Follow me: <a href="https://twitter.com/kdlry">Twitter</a>
+            Follow me: 
+            <a href="https://twitter.com/kdlry">Twitter</a>
             <a href="https://github.com/kdlry">Github</a>
             <a href="https://www.linkedin.com/in/kristen-delorey">LinkedIn</a>
           </p>
