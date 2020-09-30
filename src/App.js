@@ -16,7 +16,6 @@ class App extends Component {
       bandName: "",
       bandNameCapture: "",
       imageSearch: "",
-      // imageSearchCapture: "",
       imageResults: [],
       finalImageCapture: "",
       buttonClicked: false,
@@ -34,7 +33,6 @@ class App extends Component {
       console.log(data);
 
       for (let key in data) {
-        // push data as an object with key property
         newVinylFinal.push({
           key: key,
           band: data[key].band,
@@ -44,7 +42,6 @@ class App extends Component {
         });
       }
 
-      // update our React state for books
       this.setState({
         vinylFinal: newVinylFinal,
       });
@@ -76,60 +73,38 @@ class App extends Component {
     e.preventDefault();
 
     if (this.state.bandName === "") {
-
       Swal.fire({
         title: "Missing info",
         text: "You need a band name to start.",
         icon: "error",
         confirmButtonText: "Okay",
       });
-
     } else {
-      // const bandNameValue = this.state.bandName;
-      // this.state.bandNameCapture = bandNameValue;
-  
-      this.setState({
-        bandNameCapture: this.state.bandName,
-      }, () => {this.setState({
-        bandName: "",
-      })
-      });
-  
-      this.handleHide();
-      // console.log(this.state.bandNameCapture);
-    }
 
+      this.setState(
+        {
+          bandNameCapture: this.state.bandName,
+        },
+        () => {
+          this.setState({
+            bandName: "",
+          });
+        }
+      );
+      this.handleHide();
+    }
   };
 
   // Image Form - Input + submit handling -----------------------------------
   handleImageValue = (e) => {
-
     this.setState({
       imageSearch: e.target.value,
     });
 
-    // console.log(this.stateImageSearchCapture);
   };
 
   handleImageSubmit = (e) => {
     e.preventDefault();
-
-    // const imageValue = this.state.imageSearch;
-    // this.state.imageSearchCapture = imageValue;
-
-    // if (this.state.bandNameCapture === "") {
-    //   Swal.fire({
-    //     title: "Missing info",
-    //     text: "You need a band name to start",
-    //     icon: "error",
-    //     confirmButtonText: "Okay!",
-    //   });
-    // }
-
-    // this.setState({
-    //   imageSearch: "",
-    //   imageSearchCapture: imageValue,
-    // })
 
     // API Call - using image keyword search
     const apiAuth = "563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222";
@@ -173,7 +148,7 @@ class App extends Component {
           text: "Looks like the input field is empty... try addind a keyword.",
           icon: "error",
           confirmButtonText: "Got it!",
-        });        
+        });
       });
   };
 
@@ -231,6 +206,15 @@ class App extends Component {
     });
   };
 
+  // Remove vinyl from Firebase -----------------------------------
+  handleVinylRemove = (vinylKey) => {
+    console.log(vinylKey, 'I work');
+
+    const dbRef = firebase.database().ref();
+
+    dbRef.child(vinylKey).remove();
+  };
+
   render() {
     // Copyright for footer
     const copyright = "\u00A9";
@@ -242,6 +226,7 @@ class App extends Component {
             <h1>
               <span className="slanted">Vinyl Resting Place</span>
             </h1>
+            <h2>The Vinyl Cover Creator</h2>
           </div>
         </header>
 
@@ -257,7 +242,7 @@ class App extends Component {
           </div>
 
           <div className="wrapper">
-            <section>
+            <section className="vinylInput">
               {this.state.isActive === true && (
                 <div className="stepOne">
                   <BandForm
@@ -271,7 +256,7 @@ class App extends Component {
               {this.state.bandNameCapture !== "" &&
                 this.state.isActive === false && (
                   <div className="stepTwo">
-                    <p>How about an image for your vinyl sleeve?</p>
+                    <h3>How about an image for your vinyl sleeve?</h3>
                     <ImageForm
                       imageValue={this.state.imageSearch}
                       setImageValue={this.handleImageValue}
@@ -321,6 +306,23 @@ class App extends Component {
                         src={item.record}
                         alt="Vinyl record"
                       />
+                      <button
+                        className="removeButton"
+                        onClick={() => {
+                          this.handleVinylRemove(item.key);
+                        }}
+                        type="submit"
+                        aria-label="click here to see your vinyl record cover"
+                      >
+                        <span
+                          className="fa-stack fa-2x"
+                          role="img"
+                          aria-hidden="true"
+                        >
+                          <i className="fas fa-circle fa-stack-2x"></i>
+                          <i className="fas fa-times fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </button>
                     </div>
                   );
                 })}
@@ -331,10 +333,14 @@ class App extends Component {
         <footer>
           <p>
             Created by Kristen Delorey at{" "}
-            <a href="https://junocollege.com/">Juno College</a>
+            <a href="https://junocollege.com">Juno College</a>
           </p>
           <p>Copyright {copyright} 2020 Juno College of Technology</p>
-          {/* <p>Follow me on <a href="https://junocollege.com/" role="link"></a></p> */}
+          <p class="footerSocial">
+            Follow me: <a href="https://twitter.com/kdlry">Twitter</a>
+            <a href="https://github.com/kdlry">Github</a>
+            <a href="https://www.linkedin.com/in/kristen-delorey">LinkedIn</a>
+          </p>
         </footer>
       </div>
     );

@@ -5,10 +5,10 @@ const ImageForm = (props) => {
     const { imageValue, setImageValue, saveImageValue } = props
 
     return (
-        <div className="imageFormContainer">
+        <div>
             <form className="imageForm" action="submit" id="imageForm">
 
-                <div className="formContainer">
+                <div className="imageFormContainer">
                     <label htmlFor="searchImage" sr-only="enter band name here"></label>
                     <input
                         type="text"
@@ -16,7 +16,8 @@ const ImageForm = (props) => {
                         maxLength = "25"
                         onChange={setImageValue}
                         value={imageValue}
-                        placeholder="ex: Fluffy clouds" />
+                        placeholder="ex: lemon tree" />
+                    <p>Max. length: 25 characters</p>
                 </div>
                 
                 <div>
