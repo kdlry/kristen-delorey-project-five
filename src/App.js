@@ -10,6 +10,9 @@ import BandForm from './Components/BandForm';
 import ImageForm from './Components/ImageForm';
 import ImageSelection from './Components/ImageSelection';
 import StagingArea from './Components/StagingArea';
+
+// CSS -----------------------
+import 'sweetalert2/dist/sweetalert2.min.css';
 import './App.css';
 
 
@@ -145,7 +148,7 @@ class App extends Component {
 
       // Unsuccessful reply from API ---------
       .catch(() => {
-        
+
         // Error message for empty string ---------
         Swal.fire({
           title: 'Missing info',
