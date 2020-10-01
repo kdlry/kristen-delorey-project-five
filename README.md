@@ -7,7 +7,8 @@ Sept 30, 2020
 
 GitHubPages Live Link: https://kdlry.github.io/kristen-delorey-project-five/
 
-DESCRIPTION::
+
+#DESCRIPTION:
 This project features a simple web page built in React that displays user-generated vinyl cover art. The app will ask the user for a band name (real or fictitious) and provide a keyword search to load images from Pexel's API (https://www.pexels.com/api/documentation/?locale=en-US). The resulting selection will genereate the user's compiled vinyl cover on demand.
 
 MVP:
