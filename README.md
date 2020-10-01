@@ -1,7 +1,7 @@
 # -Project 5-
 
 Vinyl Resting Place\
-By: Kristen Delorey\
+By: Kristen Delorey
 
 Juno College of Technology\
 Sept 30, 2020\
