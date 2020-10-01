@@ -14,6 +14,7 @@ import './App.css';
 
 
 class App extends Component {
+
   // Setting properties on state object -----------------------
   constructor() {
     super();
@@ -33,7 +34,7 @@ class App extends Component {
   componentDidMount() {
     const dbRef = firebase.database().ref();
 
-    dbRef.on("value", (response) => {
+    dbRef.on('value', (response) => {
       const newVinylFinal = [];
       const data = response.val();
 
@@ -104,21 +105,22 @@ class App extends Component {
 
     // API call using keyword searched ---------
     // API Source: https://www.pexels.com/api/documentation/?locale=en-US
-    const apiAuth = "563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222";
-    const apiURL = "https://api.pexels.com/v1/search";
+    const apiAuth = '563492ad6f917000010000012aa97dcd697246f8b109b93cf6e01222';
+    const apiURL = 'https://api.pexels.com/v1/search';
 
     axios({
-      method: "GET",
+      method: 'GET',
       headers: {
         Authorization: apiAuth,
       },
       url: apiURL,
-      dataResponse: "json",
+      dataResponse: 'json',
       params: {
         query: this.state.imageSearch,
         per_page: 6,
       },
     })
+
       // Successful reply from API ---------
       .then((res) => {
         let apiResults = res.data.photos;
@@ -126,28 +128,30 @@ class App extends Component {
         // Error message for no results found ---------
         if (res.data.total_results === 0) {
           Swal.fire({
-            title: "No results",
-            text: "Try another keyword.",
-            icon: "warning",
-            confirmButtonText: "Okay.",
+            title: 'No results',
+            text: 'Try another keyword.',
+            icon: 'warning',
+            confirmButtonText: 'Okay.',
           });
+
         } else {
           // Capture results and reset input ---------
           this.setState({
             imageResults: apiResults,
-            imageSearch: "",
+            imageSearch: '',
           });
         }
       })
 
       // Unsuccessful reply from API ---------
       .catch(() => {
+        
         // Error message for empty string ---------
         Swal.fire({
-          title: "Missing info",
-          text: "Looks like the input field is empty... try addind a keyword.",
-          icon: "error",
-          confirmButtonText: "Got it!",
+          title: 'Missing info',
+          text: 'Looks like the input field is empty... try addind a keyword.',
+          icon: 'error',
+          confirmButtonText: 'Got it!',
         });
       });
   };
