@@ -5,15 +5,15 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import firebase from './Components/firebase';
 
+// CSS -----------------------
+import 'sweetalert2/dist/sweetalert2.min.css';
+import './App.css';
+
 // Components -----------------------
 import BandForm from './Components/BandForm';
 import ImageForm from './Components/ImageForm';
 import ImageSelection from './Components/ImageSelection';
 import StagingArea from './Components/StagingArea';
-
-// CSS -----------------------
-import 'sweetalert2/dist/sweetalert2.min.css';
-import './App.css';
 
 
 class App extends Component {
