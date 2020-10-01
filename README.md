@@ -20,7 +20,7 @@ Error handling:\
 • Error messaging when search turns up no results (either not found or an empty string)\
 • Reset button to clear inputs
 
-STRECTH GOALS:\
+# STRECTH GOALS:
 • Store vinyl covers in a Firebase database. The user can then decide to remove the image 
   from the database on output\
 • For the Pexels image results, the user could be presented with a selection of images to 
