@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0230e92fc61b27d83d6c978b22ccddc3",
+    "revision": "b89831b24a3f63e55a95aab23b868650",
     "url": "/kristen-delorey-project-five/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kristen-delorey-project-five/static/css/2.166ccb69.chunk.css"
   },
   {
-    "revision": "bbcd374d5f9295fa7975",
+    "revision": "6a7109566e08a40598bc",
     "url": "/kristen-delorey-project-five/static/css/main.b7c3b888.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kristen-delorey-project-five/static/js/2.edf78e99.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bbcd374d5f9295fa7975",
-    "url": "/kristen-delorey-project-five/static/js/main.103f1f73.chunk.js"
+    "revision": "6a7109566e08a40598bc",
+    "url": "/kristen-delorey-project-five/static/js/main.dc84da5e.chunk.js"
   },
   {
     "revision": "18ae56dab328b966075b",
