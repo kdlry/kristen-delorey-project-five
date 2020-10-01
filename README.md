@@ -1,7 +1,7 @@
 # -Project 5-
 
 Vinyl Resting Place\
-By: Kristen Delorey\
+By: Kristen Delorey
 
 # Juno College of Technology
 Sept 30, 2020\
@@ -15,13 +15,13 @@ This project features a simple web page built in React that displays user-genera
 • Inputs: 1. Enter band name, 2. Search image keyword\
 • Output: Display vinyl cover, with band name and image compiled\
 
-Error handling:
+Error handling:\
 • Max. characters for inputs\
 • Error messaging when search turns up no results (either not found or an empty string)\
-• Reset button to clear inputs\
+• Reset button to clear inputs
 
-STRECTH GOALS:
+STRECTH GOALS:\
 • Store vinyl covers in a Firebase database. The user can then decide to remove the image 
   from the database on output\
 • For the Pexels image results, the user could be presented with a selection of images to 
-  choose from\
+  choose from
