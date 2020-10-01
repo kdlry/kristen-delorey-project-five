@@ -1,9 +1,9 @@
 # -Project 5-
 
 Vinyl Resting Place\
-By: Kristen Delorey
+By: Kristen Delorey\
 
-# Juno College of Technology
+Juno College of Technology\
 Sept 30, 2020\
 GitHubPages Live Link: https://kdlry.github.io/kristen-delorey-project-five/
 
