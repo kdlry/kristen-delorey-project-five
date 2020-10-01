@@ -264,7 +264,7 @@ span .fa-stack-1x:focus {
 }
 
 .swal2-actions .swal2-confirm:hover,
-.swal2-actions .swal2-confirm:hover {
+.swal2-actions .swal2-confirm:focus {
   cursor: pointer;
 }
 
