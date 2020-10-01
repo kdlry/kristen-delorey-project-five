@@ -1,23 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1cd1b07616a9a493153d03d8c611ac36",
+    "revision": "7cc356d1ff98b049d906502d6747309f",
     "url": "/kristen-delorey-project-five/index.html"
   },
   {
-    "revision": "1ae025e31f447dc10a33",
+    "revision": "e4b4c0ca6e98f5f11f49",
+    "url": "/kristen-delorey-project-five/static/css/2.166ccb69.chunk.css"
+  },
+  {
+    "revision": "d7b37a68dd1276f9161e",
     "url": "/kristen-delorey-project-five/static/css/main.d7d861d9.chunk.css"
   },
   {
-    "revision": "65fbac6bf22d2a76646f",
-    "url": "/kristen-delorey-project-five/static/js/2.1a867d90.chunk.js"
+    "revision": "e4b4c0ca6e98f5f11f49",
+    "url": "/kristen-delorey-project-five/static/js/2.edf78e99.chunk.js"
   },
   {
     "revision": "70d88436874ad6f0b4ff8dc0e5c19c4e",
-    "url": "/kristen-delorey-project-five/static/js/2.1a867d90.chunk.js.LICENSE.txt"
+    "url": "/kristen-delorey-project-five/static/js/2.edf78e99.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1ae025e31f447dc10a33",
-    "url": "/kristen-delorey-project-five/static/js/main.6f93fd75.chunk.js"
+    "revision": "d7b37a68dd1276f9161e",
+    "url": "/kristen-delorey-project-five/static/js/main.103f1f73.chunk.js"
   },
   {
     "revision": "18ae56dab328b966075b",

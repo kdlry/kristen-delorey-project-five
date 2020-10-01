@@ -1,23 +1,26 @@
 {
   "files": {
     "main.css": "/kristen-delorey-project-five/static/css/main.d7d861d9.chunk.css",
-    "main.js": "/kristen-delorey-project-five/static/js/main.6f93fd75.chunk.js",
-    "main.js.map": "/kristen-delorey-project-five/static/js/main.6f93fd75.chunk.js.map",
+    "main.js": "/kristen-delorey-project-five/static/js/main.103f1f73.chunk.js",
+    "main.js.map": "/kristen-delorey-project-five/static/js/main.103f1f73.chunk.js.map",
     "runtime-main.js": "/kristen-delorey-project-five/static/js/runtime-main.b7903612.js",
     "runtime-main.js.map": "/kristen-delorey-project-five/static/js/runtime-main.b7903612.js.map",
-    "static/js/2.1a867d90.chunk.js": "/kristen-delorey-project-five/static/js/2.1a867d90.chunk.js",
-    "static/js/2.1a867d90.chunk.js.map": "/kristen-delorey-project-five/static/js/2.1a867d90.chunk.js.map",
+    "static/css/2.166ccb69.chunk.css": "/kristen-delorey-project-five/static/css/2.166ccb69.chunk.css",
+    "static/js/2.edf78e99.chunk.js": "/kristen-delorey-project-five/static/js/2.edf78e99.chunk.js",
+    "static/js/2.edf78e99.chunk.js.map": "/kristen-delorey-project-five/static/js/2.edf78e99.chunk.js.map",
     "index.html": "/kristen-delorey-project-five/index.html",
-    "precache-manifest.49047c0718006fa5d86e4d41128738b9.js": "/kristen-delorey-project-five/precache-manifest.49047c0718006fa5d86e4d41128738b9.js",
+    "precache-manifest.bae2689970524fea6f73d601a38cfe08.js": "/kristen-delorey-project-five/precache-manifest.bae2689970524fea6f73d601a38cfe08.js",
     "service-worker.js": "/kristen-delorey-project-five/service-worker.js",
+    "static/css/2.166ccb69.chunk.css.map": "/kristen-delorey-project-five/static/css/2.166ccb69.chunk.css.map",
     "static/css/main.d7d861d9.chunk.css.map": "/kristen-delorey-project-five/static/css/main.d7d861d9.chunk.css.map",
-    "static/js/2.1a867d90.chunk.js.LICENSE.txt": "/kristen-delorey-project-five/static/js/2.1a867d90.chunk.js.LICENSE.txt",
+    "static/js/2.edf78e99.chunk.js.LICENSE.txt": "/kristen-delorey-project-five/static/js/2.edf78e99.chunk.js.LICENSE.txt",
     "static/media/index.css": "/kristen-delorey-project-five/static/media/marketDeco.b40a88ee.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.b7903612.js",
-    "static/js/2.1a867d90.chunk.js",
+    "static/css/2.166ccb69.chunk.css",
+    "static/js/2.edf78e99.chunk.js",
     "static/css/main.d7d861d9.chunk.css",
-    "static/js/main.6f93fd75.chunk.js"
+    "static/js/main.103f1f73.chunk.js"
   ]
 }
