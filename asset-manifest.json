@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/kristen-delorey-project-five/static/css/main.b7c3b888.chunk.css",
-    "main.js": "/kristen-delorey-project-five/static/js/main.dc84da5e.chunk.js",
-    "main.js.map": "/kristen-delorey-project-five/static/js/main.dc84da5e.chunk.js.map",
-    "runtime-main.js": "/kristen-delorey-project-five/static/js/runtime-main.b7903612.js",
-    "runtime-main.js.map": "/kristen-delorey-project-five/static/js/runtime-main.b7903612.js.map",
-    "static/css/2.166ccb69.chunk.css": "/kristen-delorey-project-five/static/css/2.166ccb69.chunk.css",
-    "static/js/2.edf78e99.chunk.js": "/kristen-delorey-project-five/static/js/2.edf78e99.chunk.js",
-    "static/js/2.edf78e99.chunk.js.map": "/kristen-delorey-project-five/static/js/2.edf78e99.chunk.js.map",
-    "index.html": "/kristen-delorey-project-five/index.html",
-    "precache-manifest.3090d5456fb675e6843a000306cf00b6.js": "/kristen-delorey-project-five/precache-manifest.3090d5456fb675e6843a000306cf00b6.js",
-    "service-worker.js": "/kristen-delorey-project-five/service-worker.js",
-    "static/css/2.166ccb69.chunk.css.map": "/kristen-delorey-project-five/static/css/2.166ccb69.chunk.css.map",
-    "static/css/main.b7c3b888.chunk.css.map": "/kristen-delorey-project-five/static/css/main.b7c3b888.chunk.css.map",
-    "static/js/2.edf78e99.chunk.js.LICENSE.txt": "/kristen-delorey-project-five/static/js/2.edf78e99.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/kristen-delorey-project-five/static/media/marketDeco.b40a88ee.ttf"
+    "main.css": "/vinylRestingPlace/static/css/main.6818375a.chunk.css",
+    "main.js": "/vinylRestingPlace/static/js/main.f925ac7d.chunk.js",
+    "main.js.map": "/vinylRestingPlace/static/js/main.f925ac7d.chunk.js.map",
+    "runtime-main.js": "/vinylRestingPlace/static/js/runtime-main.6f80bd01.js",
+    "runtime-main.js.map": "/vinylRestingPlace/static/js/runtime-main.6f80bd01.js.map",
+    "static/css/2.166ccb69.chunk.css": "/vinylRestingPlace/static/css/2.166ccb69.chunk.css",
+    "static/js/2.7bf8f1da.chunk.js": "/vinylRestingPlace/static/js/2.7bf8f1da.chunk.js",
+    "static/js/2.7bf8f1da.chunk.js.map": "/vinylRestingPlace/static/js/2.7bf8f1da.chunk.js.map",
+    "index.html": "/vinylRestingPlace/index.html",
+    "precache-manifest.5e0da12bd3988a82f2edc1fd337292a1.js": "/vinylRestingPlace/precache-manifest.5e0da12bd3988a82f2edc1fd337292a1.js",
+    "service-worker.js": "/vinylRestingPlace/service-worker.js",
+    "static/css/2.166ccb69.chunk.css.map": "/vinylRestingPlace/static/css/2.166ccb69.chunk.css.map",
+    "static/css/main.6818375a.chunk.css.map": "/vinylRestingPlace/static/css/main.6818375a.chunk.css.map",
+    "static/js/2.7bf8f1da.chunk.js.LICENSE.txt": "/vinylRestingPlace/static/js/2.7bf8f1da.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/vinylRestingPlace/static/media/marketDeco.b40a88ee.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.b7903612.js",
+    "static/js/runtime-main.6f80bd01.js",
     "static/css/2.166ccb69.chunk.css",
-    "static/js/2.edf78e99.chunk.js",
-    "static/css/main.b7c3b888.chunk.css",
-    "static/js/main.dc84da5e.chunk.js"
+    "static/js/2.7bf8f1da.chunk.js",
+    "static/css/main.6818375a.chunk.css",
+    "static/js/main.f925ac7d.chunk.js"
   ]
 }
